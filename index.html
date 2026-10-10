@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Tutorías 1:1 online para secundaria y Programa IB. Tutores que dominan su materia y saben explicarla. Más de 7 años acompañando familias.">
+<link rel="icon" href="assets/img/logo-wizz.png">
+<title>Wizz Tutorías · Padres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 12-col asymmetric grid on cream, left-anchored type (break the center), full-width media slots between quiet text sections. 8pt spacing. */
+:root{
+  /* color: base crema (logo) · texto negro · acento azul tinta */
+  --bg:#F6F1EB;
+  --bg-alt:#ECE5DB;
+  --fg:#141413;
+  --fg-soft:#5C564E;
+  --accent:#1E3A5F;
+  --accent-soft:#DDE3EA;
+  --on-accent:#F6F1EB;
+  --panel:#1E3A5F;
+  --panel-fg:#F6F1EB;
+  --panel-soft:rgba(246,241,235,.66);
+  --panel-line:rgba(246,241,235,.22);
+  --line:rgba(20,20,19,.12);
+  --logo-filter:none;
+
+  /* type: una sola familia display/cuerpo + mono utilitaria */
+  --font:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --t-label:.8125rem;   /* 13 */
+  --t-small:1rem;       /* 16 */
+  --t-body:1.125rem;    /* 18 */
+  --t-lead:1.5rem;      /* 24 */
+  --t-h3:2rem;          /* 32 */
+  --t-h2:clamp(2.25rem,4.6vw,3.5rem);
+  --t-h1:clamp(2.75rem,7.4vw,6.5rem);
+  --t-say:clamp(2rem,5.4vw,4.5rem);
+
+  /* 8-point spacing */
+  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;--s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;--s20:160px;--s24:192px;
+  --gutter:clamp(16px,3.2vw,40px);
+  --max:1360px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151C;--bg-alt:#18202A;--fg:#F1ECE4;--fg-soft:#A8A197;
+    --accent:#9DB8D9;--accent-soft:#1D2A3A;--on-accent:#0E1620;
+    --panel:#162638;--panel-fg:#F1ECE4;--panel-soft:rgba(241,236,228,.66);--panel-line:rgba(241,236,228,.18);
+    --line:rgba(241,236,228,.14);--logo-filter:invert(1) brightness(.95);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151C;--bg-alt:#18202A;--fg:#F1ECE4;--fg-soft:#A8A197;
+  --accent:#9DB8D9;--accent-soft:#1D2A3A;--on-accent:#0E1620;
+  --panel:#162638;--panel-fg:#F1ECE4;--panel-soft:rgba(241,236,228,.66);--panel-line:rgba(241,236,228,.18);
+  --line:rgba(241,236,228,.14);--logo-filter:invert(1) brightness(.95);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 88px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--font);font-size:var(--t-body);line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+  padding-inline:var(--gutter);
+}
+h1,h2,h3,p,ul,ol,figure,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+h1,h2,h3{font-weight:400;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+
+.wrap{max-width:var(--max);margin-inline:auto}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--s3)}
+.label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;text-transform:uppercase;color:var(--fg-soft)}
+.label b{color:var(--accent);font-weight:500}
+.soft{color:var(--fg-soft)}
+.spark{display:inline-block;width:28px;height:16px;color:var(--accent)}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;gap:var(--s1);min-height:56px;padding:0 var(--s4);border-radius:99px;
+  background:var(--accent);color:var(--on-accent);font:500 var(--t-small)/1 var(--font);text-decoration:none;border:0;cursor:pointer;
+  transition:transform .25s ease,background .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.link{font-size:var(--t-small);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
+.link:hover{border-color:var(--fg)}
+
+/* ── nav ── */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(var(--gutter) * -1);padding:var(--s2) var(--gutter);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.logo{height:48px;width:auto;filter:var(--logo-filter)}
+.nav-links{display:flex;align-items:center;gap:var(--s4)}
+.nav-links a:not(.btn){font-size:var(--t-small);text-decoration:none;color:var(--fg-soft);transition:color .2s}
+.nav-links a:not(.btn):hover{color:var(--fg)}
+.nav .btn{min-height:48px;padding:0 var(--s3)}
+@media (max-width:900px){.nav-links a:not(.btn){display:none}}
+
+/* ── hero ── */
+.hero{padding-block:var(--s12) var(--s8)}
+.hero h1{grid-column:1 / span 10;font-size:var(--t-h1);font-weight:400}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .eyebrow{grid-column:1 / -1;margin-bottom:var(--s5)}
+.hero-side{grid-column:8 / span 5;margin-top:var(--s8);display:grid;gap:var(--s4)}
+.hero-side p{font-size:var(--t-lead);line-height:1.4;color:var(--fg-soft);letter-spacing:-.01em}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3)}
+.facts{grid-column:1 / span 6;margin-top:var(--s8);align-self:end;display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5)}
+.facts li{display:grid;gap:4px}
+.facts strong{font-weight:500;font-size:var(--t-lead);letter-spacing:-.02em}
+.facts span{font-size:var(--t-small);color:var(--fg-soft)}
+@media (max-width:900px){
+  .hero h1,.hero-side,.facts{grid-column:1 / -1}
+  .hero-side{margin-top:var(--s5)}
+  .facts{order:3;margin-top:var(--s6)}
+}
+
+/* ── media slots ── */
+.media{position:relative;width:100%;max-width:100%;background:var(--bg-alt);overflow:hidden;border-radius:4px;isolation:isolate}
+.media::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/calc(100%/12) 100%;opacity:.55;z-index:-1}
+.media .tag{position:absolute;left:var(--s3);top:var(--s3);font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;
+  background:var(--bg);color:var(--fg);padding:var(--s1) var(--s2);border-radius:99px}
+.media .cap{position:absolute;left:var(--s3);bottom:var(--s3);right:var(--s3);font-family:var(--mono);font-size:var(--t-label);
+  line-height:1.5;color:var(--fg-soft);letter-spacing:.02em;max-width:52ch}
+.media .glyph{position:absolute;inset:0;display:grid;place-items:center;color:var(--fg-soft);opacity:.35}
+.media .glyph svg{width:72px;height:auto}
+.r-hero{aspect-ratio:21/9}
+.r-wide{aspect-ratio:16/9}
+.r-pano{aspect-ratio:3/1}
+.r-tall{aspect-ratio:4/5}
+.r-port{aspect-ratio:3/4}
+@media (max-width:700px){.r-hero{aspect-ratio:4/5}.r-pano{aspect-ratio:4/3}}
+
+/* ── sections ── */
+section{padding-block:var(--s20)}
+@media (max-width:700px){section{padding-block:var(--s12)}}
+.sec-head{display:grid;gap:var(--s3);margin-bottom:var(--s10)}
+.sec-head h2{font-size:var(--t-h2)}
+
+/* spaced statements (one thought per line) */
+.say{row-gap:var(--s16)}
+.say p{min-width:0;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;max-width:none;text-wrap:balance}
+.say .s1{grid-column:1 / span 7}
+.say .s2{grid-column:4 / span 7}
+.say .s3{grid-column:6 / span 7}
+.say .s4{grid-column:1 / span 10;color:var(--fg)}
+.say .s4 span{color:var(--accent)}
+.say .dim{color:var(--fg-soft)}
+@media (max-width:900px){.say{row-gap:var(--s10);grid-template-columns:minmax(0,1fr)}.say p{grid-column:1 / -1!important;max-width:100%!important}}
+
+/* experience split */
+.exp .media{grid-column:1 / span 7}
+.exp .txt{grid-column:9 / span 4;align-self:end;display:grid;gap:var(--s3)}
+.exp h2{font-size:var(--t-h2)}
+.exp .big{font-size:clamp(5rem,12vw,10rem);font-weight:300;letter-spacing:-.06em;line-height:.9;color:var(--accent)}
+@media (max-width:900px){.exp .media,.exp .txt{grid-column:1 / -1}.exp .txt{margin-top:var(--s6)}}
+
+/* pillars */
+.pillars{row-gap:var(--s10)}
+.pillar{display:grid;align-content:start;gap:var(--s2);padding-top:var(--s3);border-top:1px solid var(--line)}
+.pillar h3{font-size:var(--t-h3)}
+.pillar p{color:var(--fg-soft);max-width:38ch}
+.pillar:nth-child(1){grid-column:1 / span 4}
+.pillar:nth-child(2){grid-column:5 / span 4;margin-top:var(--s10)}
+.pillar:nth-child(3){grid-column:9 / span 4;margin-top:var(--s20)}
+@media (max-width:900px){.pillar{grid-column:1 / -1!important;margin-top:0!important}}
+
+/* steps */
+.steps .media{grid-column:1 / span 5;align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px)}
+.steps ol{grid-column:7 / span 6;display:grid;gap:var(--s10)}
+.steps li{display:grid;grid-template-columns:64px 1fr;gap:var(--s3);padding-top:var(--s3);border-top:1px solid var(--line)}
+.steps .n{font-family:var(--mono);font-size:var(--t-small);color:var(--accent);padding-top:6px}
+.steps h3{font-size:var(--t-h3);margin-bottom:var(--s2)}
+.steps p{color:var(--fg-soft);max-width:44ch}
+@media (max-width:900px){.steps .media{grid-column:1 / -1;position:static}.steps ol{grid-column:1 / -1;margin-top:var(--s8)}}
+
+/* brand statement */
+.brand{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.brand .spark{color:var(--panel-fg);width:48px;height:28px}
+.brand p{grid-column:2 / span 10;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;text-wrap:balance;margin-top:var(--s5)}
+.brand p span{color:var(--panel-soft)}
+.brand .spark-wrap{grid-column:2 / span 10}
+@media (max-width:900px){.brand p,.brand .spark-wrap{grid-column:1 / -1}}
+
+/* tutors */
+.tutors .intro{grid-column:1 / span 6;display:grid;gap:var(--s3);margin-bottom:var(--s10)}
+.tutors .intro h2{font-size:var(--t-h2)}
+.tutors .photos{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6) var(--s3)}
+.tphoto{display:grid;gap:var(--s2);align-content:start}
+.tphoto img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:4px;background:var(--bg-alt)}
+.tphoto figcaption{display:flex;justify-content:space-between;gap:var(--s2);font-size:var(--t-small)}
+.tphoto:nth-child(3n+2){margin-top:var(--s10)}
+.tphoto:nth-child(3n+3){margin-top:var(--s5)}
+.profiles{grid-column:5 / span 8;margin-top:var(--s12);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}
+.profiles div{display:grid;gap:var(--s2);padding-top:var(--s3);border-top:1px solid var(--line)}
+.profiles h3{font-size:var(--t-lead);letter-spacing:-.02em;line-height:1.2}
+.profiles p{color:var(--fg-soft)}
+.checks{grid-column:5 / span 8;margin-top:var(--s6);display:grid;gap:var(--s2)}
+.checks li{display:grid;grid-template-columns:24px 1fr;gap:var(--s2);color:var(--fg-soft)}
+.checks li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:10px}
+@media (max-width:900px){
+  .tutors .intro,.profiles,.checks{grid-column:1 / -1}
+  .tutors .photos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tphoto:nth-child(n){margin-top:0}
+  .tphoto:nth-child(2n){margin-top:var(--s5)}
+  .profiles{grid-template-columns:1fr}
+}
+
+/* subjects */
+.subjects .media{grid-column:8 / span 5;grid-row:1 / span 2}
+.subjects .sec-head{grid-column:1 / span 6}
+.cols{grid-column:1 / span 6;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+.cols h3{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:var(--s3);line-height:1.4}
+.cols li{font-size:var(--t-small);padding-block:var(--s1);border-bottom:1px solid var(--line)}
+.cols p{font-size:var(--t-small);color:var(--fg-soft)}
+@media (max-width:900px){
+  .subjects .media,.subjects .sec-head,.cols{grid-column:1 / -1;grid-row:auto}
+  .subjects .media{margin-top:var(--s8)}
+  .cols{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+}
+
+/* faq */
+.faq .sec-head{grid-column:1 / span 4;align-self:start}
+.faq .list{grid-column:6 / span 7}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--s3);padding-block:var(--s3);font-size:var(--t-body);font-weight:500;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--accent);font-size:var(--t-lead);line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding-bottom:var(--s3);color:var(--fg-soft);max-width:60ch}
+@media (max-width:900px){.faq .sec-head,.faq .list{grid-column:1 / -1}}
+
+/* cta */
+.cta{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.cta .left{grid-column:1 / span 5;display:grid;gap:var(--s3);align-content:start}
+.cta h2{font-size:var(--t-h2)}
+.cta .left p{color:var(--panel-soft);max-width:36ch}
+.cta .label{color:var(--panel-soft)}
+form{grid-column:7 / span 6;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3)}
+.f{display:grid;gap:var(--s1);min-width:0}
+.f.full{grid-column:1 / -1}
+.f label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--panel-soft)}
+.f input,.f select,.f textarea{width:100%;font:400 var(--t-body)/1.4 var(--font);color:var(--panel-fg);background:transparent;
+  border:0;border-bottom:1px solid var(--panel-line);padding:var(--s1) 0 var(--s2);border-radius:0;appearance:none;-webkit-appearance:none}
+.f select option{color:#141413}
+.f textarea{resize:vertical;min-height:96px}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-bottom-color:var(--panel-fg)}
+.f input::placeholder,.f textarea::placeholder{color:var(--panel-soft);opacity:.7}
+.cta .btn{background:var(--panel-fg);color:var(--panel);justify-self:start;grid-column:1 / -1}
+.form-note{grid-column:1 / -1;font-size:var(--t-small);color:var(--panel-soft)}
+.ok{grid-column:1 / -1;font-size:var(--t-lead);line-height:1.35}
+@media (max-width:900px){.cta .left,form{grid-column:1 / -1}form{margin-top:var(--s8);grid-template-columns:1fr}}
+
+/* footer */
+footer{padding-block:var(--s10) var(--s6)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s4)}
+footer nav{display:flex;flex-wrap:wrap;gap:var(--s3)}
+footer a{font-size:var(--t-small);text-decoration:none;color:var(--fg-soft)}
+footer a:hover{color:var(--fg)}
+footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-top:var(--s4);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
+.full-media{padding-block:0}
+/* reel: fotos reales en movimiento lento (reemplaza el video hero) */
+.reel{padding-block:0 var(--s4);margin-inline:calc(var(--gutter) * -1);overflow:hidden}
+.reel-track{display:flex;width:max-content;animation:drift 60s linear infinite}
+.reel:hover .reel-track{animation-play-state:paused}
+.reel-set{display:flex;gap:var(--s2);padding-right:var(--s2)}
+.reel-card{position:relative;margin:0;height:clamp(320px,40vw,560px);aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--bg-alt)}
+.reel-card img{width:100%;height:100%;object-fit:cover;animation:breathe 14s ease-in-out infinite alternate}
+.reel-card:nth-child(even) img{animation-delay:-7s}
+.reel-card figcaption{position:absolute;left:var(--s2);bottom:var(--s2);font-family:var(--mono);font-size:var(--t-label);letter-spacing:.06em;
+  background:var(--bg);color:var(--fg);padding:4px var(--s1);border-radius:99px}
+.reel-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s3);padding-inline:var(--gutter)}
+@keyframes drift{to{transform:translateX(-50%)}}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.reel-track,.reel-card img{animation:none}.reel{overflow-x:auto}}
+
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="0 0 56 32">
+    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+      <path d="M28 4v16"/><path d="M16 9l7 11"/><path d="M40 9l-7 11"/><path d="M7 17l12 5"/><path d="M49 17l-12 5"/><path d="M6 28h44"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" aria-label="Wizz Tutorías, inicio"><img class="logo" src="assets/img/logo-wizz.png" alt="Wizz Tutorías"></a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#experiencia">Por qué Wizz</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#tutores">Tutores</a>
+      <a href="#materias">Materias</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn" href="#agendar">Agendar clase de prueba</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap grid">
+    <p class="label eyebrow"><b>Para padres</b> &nbsp;·&nbsp; Tutorías 1:1 online · Secundaria y Programa IB</p>
+    <h1>El tutor que estabas buscando para tu hijo <em>está aquí.</em></h1>
+    <ul class="facts" aria-label="Datos de Wizz">
+      <li><strong>+7 años</strong><span>acompañando familias</span></li>
+      <li><strong>1:1</strong><span>un tutor, un alumno</span></li>
+      <li><strong>Sin contratos</strong><span>pausas o cambias cuando quieras</span></li>
+    </ul>
+    <div class="hero-side">
+      <p>Tutores que dominan su materia y saben explicársela a tu hijo. Lo elegimos pensando en cómo aprende él.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#agendar">Agendar clase de prueba</a>
+        <a class="link" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reel" aria-label="Tutores reales de Wizz">
+  <div class="reel-track">
+    <div class="reel-set"><figure class="reel-card"><img src="assets/img/tutores/tutor-01.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Sergio</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-02.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Matías</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-03.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Santiago</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-04.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Álvaro</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-05.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Samira</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-06.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Alexandra</figcaption></figure></div>
+    <div class="reel-set" aria-hidden="true"><figure class="reel-card"><img src="assets/img/tutores/tutor-01.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Sergio</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-02.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Matías</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-03.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Santiago</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-04.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Álvaro</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-05.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Samira</figcaption></figure><figure class="reel-card"><img src="assets/img/tutores/tutor-06.jpg" alt="" width="800" height="1000" loading="eager"><figcaption>Alexandra</figcaption></figure></div>
+  </div>
+  <div class="wrap reel-foot"><p class="label"><b>Fotos reales</b> &nbsp;·&nbsp; Algunos de nuestros tutores</p><a class="link" href="#tutores">Conócelos</a></div>
+</section>
+
+<!-- SPACED STATEMENTS -->
+<section aria-label="Lo que viven los padres">
+  <div class="wrap grid say">
+    <p class="s1 dim">Ya probaste la academia.</p>
+    <p class="s2 dim">Ya probaste las clases particulares.</p>
+    <p class="s3 dim">Ya le explicaste tú, a las diez de la noche.</p>
+    <p class="s4">Tu hijo necesita a alguien que sepa la materia <span>y que sepa enseñársela a él.</span></p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experiencia" style="padding-top:0">
+  <div class="wrap grid exp">
+    <figure class="media r-tall">
+      <img src="assets/img/escenas/img-01.jpg" alt="Madre acompañando a su hijo mientras estudia" width="800" height="1000" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    </figure>
+    <div class="txt">
+      <p class="label"><b>Desde hace más de 7 años</b></p>
+      <p class="big" aria-hidden="true">+7</p>
+      <h2>No empezamos ayer.</h2>
+      <p class="soft">Llevamos más de siete años escuchando a familias, eligiendo con cuidado a cada tutor y acompañando a cada alumno durante el año escolar. Esa experiencia es la que nos permite acertar con el tutor desde la primera clase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section style="padding-top:0" aria-label="Lo que vas a encontrar">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Lo que vas a encontrar</b></p>
+    </div>
+    <div class="grid pillars">
+      <article class="pillar">
+        <h3>Saben la materia.</h3>
+        <p>Universitarios destacados y profesionales con años en educación. Antes de su primera clase pasan por selección y capacitación en nuestra metodología.</p>
+      </article>
+      <article class="pillar">
+        <h3>Saben explicarla.</h3>
+        <p>Saber no basta. Elegimos a quienes explican con paciencia y adaptan la clase a cómo aprende tu hijo. Si hay que repetirlo cinco veces, se repite.</p>
+      </article>
+      <article class="pillar">
+        <h3>Y te cuentan cómo va.</h3>
+        <p>Después de cada sesión el tutor registra avances y lo que falta trabajar. Sabes qué está pasando sin tener que preguntar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="full-media" aria-label="Imagen panorámica">
+  <div class="wrap">
+    <figure class="media r-pano">
+      <img src="assets/img/escenas/img-02.jpg" alt="Escritorio de estudiante con cuaderno y laptop" width="1600" height="533" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    </figure>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Cómo funciona</b></p>
+      <h2>Tres pasos. Sin contratos.</h2>
+    </div>
+    <div class="grid steps">
+      <figure class="media r-tall">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover">
+          <source src="assets/video/vid-01.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <ol>
+        <li><span class="n">01</span><div><h3>Nos cuentas de tu hijo</h3><p>Materia, programa y nivel. También cómo aprende, qué le cuesta y con qué tipo de persona se siente cómodo.</p></div></li>
+        <li><span class="n">02</span><div><h3>Elegimos a su tutor</h3><p>Por conocimiento, por forma de enseñar y por personalidad. Lo pensamos para tu hijo, no lo asignamos al azar.</p></div></li>
+        <li><span class="n">03</span><div><h3>Clase de prueba</h3><p>Tu hijo conoce a su tutor en una sesión 1:1 online. Si no conectan, lo cambiamos sin costo.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STATEMENT -->
+<section class="brand" aria-label="Qué es Wizz">
+  <div class="wrap grid">
+    <div class="spark-wrap"><svg class="spark" viewBox="0 0 56 32" aria-hidden="true"><use href="#spark"/></svg></div>
+    <p>En Wizz cada alumno tiene su tutor. <span>Y cada tutor conoce a su alumno: cómo piensa, qué le cuesta y qué lo motiva.</span></p>
+  </div>
+</section>
+
+<!-- TUTORS -->
+<section id="tutores">
+  <div class="wrap grid tutors">
+    <div class="intro">
+      <p class="label"><b>Nuestros tutores</b></p>
+      <h2>Personas reales que saben y que se preocupan.</h2>
+    </div>
+    <div class="photos"><figure class="tphoto"><img src="assets/img/tutores/tutor-01.jpg" alt="Sergio" width="800" height="1000" loading="lazy"><figcaption><span>Sergio</span><span class="soft">Matemáticas · Física</span></figcaption></figure><figure class="tphoto"><img src="assets/img/tutores/tutor-02.jpg" alt="Matías" width="800" height="1000" loading="lazy"><figcaption><span>Matías</span><span class="soft">Matemáticas · Física</span></figcaption></figure><figure class="tphoto"><img src="assets/img/tutores/tutor-03.jpg" alt="Santiago" width="800" height="1000" loading="lazy"><figcaption><span>Santiago</span><span class="soft">Matemáticas · Historia · Literatura</span></figcaption></figure><figure class="tphoto"><img src="assets/img/tutores/tutor-04.jpg" alt="Álvaro" width="800" height="1000" loading="lazy"><figcaption><span>Álvaro</span><span class="soft">Matemáticas · Física · Química</span></figcaption></figure><figure class="tphoto"><img src="assets/img/tutores/tutor-05.jpg" alt="Samira" width="800" height="1000" loading="lazy"><figcaption><span>Samira</span><span class="soft">Química · Biología</span></figcaption></figure><figure class="tphoto"><img src="assets/img/tutores/tutor-06.jpg" alt="Alexandra" width="800" height="1000" loading="lazy"><figcaption><span>Alexandra</span><span class="soft">Historia · Literatura · Inglés</span></figcaption></figure></div>
+    <div class="profiles">
+      <div><h3>Universitarios que hace poco vivieron lo mismo que tu hijo</h3><p>Conectan rápido con los alumnos y recuerdan qué se siente no entender algo a los 15 años.</p></div>
+      <div><h3>Tutores con años de experiencia en educación</h3><p>Conocen a fondo secundaria y el Programa IB, nivel medio y nivel superior.</p></div>
+    </div>
+    <ul class="checks">
+      <li>Seleccionados por conocimiento académico y por cómo tratan a los alumnos</li>
+      <li>Formados en nuestra metodología antes de su primera sesión</li>
+      <li>Evaluados de forma constante por alumnos y padres</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="materias" style="padding-top:0">
+  <div class="wrap grid subjects">
+    <div class="sec-head">
+      <p class="label"><b>Materias</b></p>
+      <h2>Secundaria, Pre&#8209;IB y Programa&nbsp;IB.</h2>
+    </div>
+    <figure class="media r-tall">
+      <img src="assets/img/escenas/img-03.jpg" alt="Estudiante concentrada estudiando" width="800" height="1000" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+    </figure>
+    <div class="cols">
+      <div><h3>Secundaria</h3><ul><li>Matemáticas</li><li>Física</li><li>Química</li><li>Biología</li><li>Historia</li><li>Lengua y Literatura</li><li>Inglés</li><li>Economía</li></ul></div>
+      <div><h3>Pre&#8209;IB</h3><p>Preparación en las materias de secundaria para llegar al Programa IB con una base sólida.</p></div>
+      <div><h3>Programa IB</h3><ul><li>Matemáticas NM / NS</li><li>Física · Química · Biología</li><li>Economía IB</li><li>Teoría del Conocimiento</li><li>Monografía</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="preguntas" style="padding-top:0">
+  <div class="wrap grid faq">
+    <div class="sec-head">
+      <p class="label"><b>Preguntas frecuentes</b></p>
+      <h2>Lo que nos preguntan los padres.</h2>
+    </div>
+    <div class="list">
+      <details open><summary>¿Cómo eligen a los tutores?</summary><p>Cada tutor pasa por un proceso de selección que evalúa conocimiento académico, comunicación y empatía. Después recibe capacitación en nuestra metodología antes de dar su primera clase.</p></details>
+      <details><summary>¿Qué pasa si mi hijo no conecta con el tutor?</summary><p>Lo cambiamos sin costo ni complicación. El match es lo más importante, así que si no funciona buscamos a alguien mejor.</p></details>
+      <details><summary>¿Cómo sé que mi hijo está avanzando?</summary><p>Después de cada sesión el tutor registra los avances y las áreas a trabajar, y mantenemos comunicación constante contigo.</p></details>
+      <details><summary>¿Los tutores son solo universitarios?</summary><p>No. Tenemos dos perfiles: universitarios que hace poco vivieron la misma etapa escolar y tutores con años de experiencia en secundaria y Bachillerato Internacional. Todos pasan por la misma selección y capacitación.</p></details>
+      <details><summary>¿Cubren el Programa IB?</summary><p>Sí. Cubrimos secundaria, Pre-IB y el Programa del Bachillerato Internacional, nivel medio y nivel superior.</p></details>
+      <details><summary>¿Las clases son online?</summary><p>Sí, todas las sesiones son 1:1 y 100% online, con horarios flexibles.</p></details>
+      <details><summary>¿Hay permanencia mínima?</summary><p>No manejamos contratos. Puedes pausar o cancelar cuando quieras.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="agendar">
+  <div class="wrap grid">
+    <div class="left">
+      <p class="label">Clase de prueba</p>
+      <h2>Conoce al tutor de tu hijo.</h2>
+      <p>Déjanos tus datos y te escribimos por WhatsApp para coordinar la clase de prueba. Sin compromiso.</p>
+    </div>
+    <form id="lead" action="https://formsubmit.co/adriana.rodriguez.zelada@gmail.com" method="POST" novalidate>
+      <div class="f"><label for="f-nombre">Tu nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required placeholder="Nombre y apellido"></div>
+      <div class="f"><label for="f-wsp">WhatsApp</label><input id="f-wsp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+51 9XX XXX XXX"></div>
+      <div class="f full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
+      <div class="f"><label for="f-prog">Programa</label>
+        <select id="f-prog" name="programa"><option>Secundaria</option><option>Pre-IB</option><option>Programa IB</option></select></div>
+      <div class="f"><label for="f-mat">Materia</label>
+        <select id="f-mat" name="materia"><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Economía</option><option>Teoría del Conocimiento</option><option>Monografía IB</option><option>Otra</option></select></div>
+      <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
+      <input type="hidden" name="_subject" value="Nueva inscripción Wizz Tutorías">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <input type="hidden" name="_next" value="">
+      <button class="btn" type="submit">Quiero agendar la clase de prueba</button>
+      <p class="form-note" id="form-note">Respondemos en horario de oficina.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo" src="assets/img/logo-wizz.png" alt="Wizz Tutorías">
+    <nav aria-label="Pie de página">
+      <a href="#experiencia">Por qué Wizz</a><a href="#como-funciona">Cómo funciona</a><a href="#tutores">Tutores</a><a href="#materias">Materias</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <small><span>© 2026 Wizz Tutorías · Latinoamérica</span><span>¿Eres estudiante? Tu página llega pronto.</span></small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('lead');
+  form.querySelector('[name="_next"]').value=location.href+'#gracias';
+  form.addEventListener('submit',function(e){
+    var n=form.querySelector('#f-nombre'), w=form.querySelector('#f-wsp');
+    var note=document.getElementById('form-note');
+    if(!n.value.trim()||!w.value.trim()){
+      e.preventDefault();
+      note.textContent='Completa tu nombre y tu WhatsApp para poder escribirte.';
+      (n.value.trim()?w:n).focus();
+      return;
+    }
+    var btn=form.querySelector('button[type="submit"]');
+    btn.disabled=true;
+    btn.textContent='Enviando…';
+    var data=new FormData(form);
+    e.preventDefault();
+    fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        form.innerHTML='<p class="ok">Gracias, '+n.value.trim().split(' ')[0].replace(/[<>&]/g,'')+'. Recibimos tus datos y te contactaremos pronto por WhatsApp.</p>';
+      } else {
+        note.textContent='Hubo un error. Intenta de nuevo o escríbenos directo por WhatsApp.';
+        btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
+      }
+    })
+    .catch(function(){
+      note.textContent='Error de conexión. Intenta de nuevo.';
+      btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
