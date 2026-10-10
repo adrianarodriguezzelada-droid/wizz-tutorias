@@ -17,13 +17,14 @@ Landing de Wizz Tutorías (tutorías 1:1 online para secundaria, Pre-IB y Progra
 - Envío por AJAX con mensaje de éxito inline (no redirige a otra página).
 
 ### Tutores registrados (del spreadsheet)
-Solo se usa el primer nombre (sin apellido). Datos del Google Sheet:
-- **Sergio** — Matemáticas, Física (Computer Science, UTEC)
-- **Matías** — Matemáticas, Física (Ingeniería Mecánica, PUCP)
-- **Santiago** — Matemáticas, Historia, Literatura (Relaciones Internacionales, UPC)
-- **Álvaro** — Matemáticas, Física, Química (Ingeniería Industrial, U. de Lima)
-- **Samira** — Química, Biología (Biología, UPC)
-- **Alexandra** — Historia, Literatura, Inglés (BBA + Data Analytics, IE University)
+Solo se usa el primer nombre (sin apellido). Los cursos se cargan dinámicamente desde el Google Sheet (columna E "¿Qué cursos puedes enseñar?").
+Asignación foto → tutor (verificada oct 2026):
+- `tutor-01.jpg` → **Samira**
+- `tutor-02.jpg` → **Sebastián** (registrado como "Sergio Sebastián" en el sheet)
+- `tutor-03.jpg` → **Alexandra**
+- `tutor-04.jpg` → **Álvaro**
+- `tutor-05.jpg` → **Matías**
+- `tutor-06.jpg` → **Santiago**
 
 **Spreadsheet de horarios**: https://docs.google.com/spreadsheets/d/1YXIuTiIJqlhCss4Ra6J1VWurS42e6Q1FENe8pL-HmeQ/edit?gid=1630250331#gid=1630250331
 
@@ -44,7 +45,7 @@ Todas las imágenes de `Imagenes/` (generadas con Gemini) ya están copiadas y f
 - `.claude/launch.json`: config del dev server local (`npx serve` en puerto 3000).
 
 ## Reglas de diseño (no cambiar sin preguntar)
-- Colores: base crema `#F6F1EB`, texto negro `#141413`, acento azul tinta `#1E3A5F`. Están definidos como tokens en `:root`, con modo oscuro.
+- Colores: base crema/beige `#F6F1EB`, texto negro `#141413`, acento azul tinta `#1E3A5F`. Forzado a modo claro (`data-theme="light"`). Las secciones `.brand` y `.cta` usan el azul `#1E3A5F` como fondo de contraste.
 - Una sola familia tipográfica: Geist (Google Fonts) y Geist Mono para etiquetas pequeñas.
 - Texto de cuerpo entre 16 y 18 px.
 - Espaciado de 8 en 8 px (tokens `--s1` … `--s24`).
@@ -66,7 +67,7 @@ Todas las imágenes de `Imagenes/` (generadas con Gemini) ya están copiadas y f
   - Registro `CNAME` para `www` → `adrianarodriguezzelada-droid.github.io`
   - En el repo de GitHub: Settings → Pages → Custom domain → poner el dominio
 - [ ] **Confirmar Formsubmit**: Enviar un test del formulario y confirmar el email de activación de Formsubmit.co.
-- [ ] **Verificar asignación foto-tutor**: Confirmar que cada foto (tutor-01 a tutor-06) corresponde al tutor correcto (Sergio, Matías, Santiago, Álvaro, Samira, Alexandra).
+- [x] **Verificar asignación foto-tutor**: Corregido oct 2026. Fotos reasignadas correctamente.
 
 ### Prioridad media
 - [ ] Sistema de usuarios: que los padres creen usuario/contraseña y escojan clase según horarios de tutores.
