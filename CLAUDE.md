@@ -61,19 +61,20 @@ Todas las imágenes de `Imagenes/` (generadas con Gemini) ya están copiadas y f
 
 ## Pendientes (próxima sesión)
 
-### Prioridad alta
-- [ ] **Conectar dominio GoDaddy**: La web está en GitHub Pages. Falta ir a GoDaddy y apuntar el dominio con registros DNS:
-  - Registro `A` apuntando a `185.199.108.153` (y los otros 3 IPs de GitHub Pages)
-  - Registro `CNAME` para `www` → `adrianarodriguezzelada-droid.github.io`
-  - En el repo de GitHub: Settings → Pages → Custom domain → poner el dominio
-- [ ] **Confirmar Formsubmit**: Enviar un test del formulario y confirmar el email de activación de Formsubmit.co.
+### Completados
+- [x] **Conectar dominio GoDaddy**: DNS configurado (4 registros A + CNAME www). GitHub Pages activo con HTTPS. Dominio: wizztutorias.com
 - [x] **Verificar asignación foto-tutor**: Corregido oct 2026. Fotos reasignadas correctamente.
+- [x] **Conectar cursos con spreadsheet**: Los cursos se leen dinámicamente del Google Sheet vía gviz API.
+
+### Prioridad alta
+- [ ] **Confirmar Formsubmit**: Enviar un test del formulario y confirmar el email de activación de Formsubmit.co.
+- [ ] **Sistema de inscripción para padres (fase 2)**: Que los padres puedan inscribirse, ver horarios de tutores y agendar clases.
 
 ### Prioridad media
-- [ ] Sistema de usuarios: que los padres creen usuario/contraseña y escojan clase según horarios de tutores.
 - [ ] Integrar horarios del spreadsheet de Google Sheets para que los padres vean disponibilidad.
 - [ ] Mejoras estéticas de la landing.
 - [ ] Página para estudiantes.
+- [ ] **Migrar a hosting privado** (Vercel/Netlify) cuando se agregue lógica de negocio (usuarios, pagos).
 
 ### Prioridad baja
 - [ ] Conectar formulario a CRM o WhatsApp Business API.

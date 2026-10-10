@@ -283,6 +283,41 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
 @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.06)}}
 @media (prefers-reduced-motion:reduce){.reel-track,.reel-card img{animation:none}.reel{overflow-x:auto}}
 
+/* schedule picker */
+.sched{background:var(--bg);padding-block:var(--s12)}
+.sched .sec-head{margin-bottom:var(--s6)}
+.sched .sec-head h2{font-size:var(--t-h2)}
+.sched-filters{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s8)}
+.sched-filters button{font:500 var(--t-small)/1 var(--font);padding:var(--s1) var(--s3);border-radius:99px;border:1px solid var(--line);
+  background:transparent;color:var(--fg-soft);cursor:pointer;transition:all .2s}
+.sched-filters button.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.sched-filters button:hover:not(.active){border-color:var(--fg-soft)}
+.tutor-sched{margin-bottom:var(--s8);padding:var(--s4);background:var(--bg-alt);border-radius:8px;display:none}
+.tutor-sched.visible{display:block}
+.tutor-sched-head{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4)}
+.tutor-sched-head img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.tutor-sched-head h3{font-size:var(--t-lead);letter-spacing:-.02em}
+.tutor-sched-head .soft{font-size:var(--t-small)}
+.sched-grid{display:grid;grid-template-columns:72px repeat(7,minmax(0,1fr));gap:2px;font-size:var(--t-label);font-family:var(--mono)}
+.sched-grid .day-head{text-align:center;padding:var(--s1) 0;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-soft)}
+.sched-grid .time-label{padding:var(--s1) var(--s1) var(--s1) 0;text-align:right;color:var(--fg-soft);white-space:nowrap;align-self:center}
+.sched-grid .slot{padding:var(--s1);text-align:center;border-radius:4px;transition:all .15s}
+.sched-grid .slot.free{background:rgba(30,58,95,.08);color:var(--accent);cursor:pointer}
+.sched-grid .slot.free:hover{background:var(--accent);color:var(--on-accent);transform:scale(1.05)}
+.sched-grid .slot.taken{background:transparent;color:var(--line)}
+.sched-grid .slot.picked{background:var(--accent);color:var(--on-accent);font-weight:500}
+.sched-empty{color:var(--fg-soft);font-size:var(--t-body);padding:var(--s4)}
+.picked-banner{background:var(--accent);color:var(--on-accent);padding:var(--s3) var(--s4);border-radius:8px;margin-bottom:var(--s6);
+  display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
+.picked-banner.visible{display:flex}
+.picked-banner strong{font-weight:500}
+.picked-banner button{background:var(--on-accent);color:var(--accent);border:0;padding:var(--s1) var(--s3);border-radius:99px;
+  font:500 var(--t-small)/1 var(--font);cursor:pointer}
+@media (max-width:700px){
+  .sched-grid{grid-template-columns:52px repeat(7,minmax(0,1fr));font-size:.6875rem}
+  .sched-grid .day-head{font-size:.6875rem}
+}
+
 </style>
 </head>
 <body>
@@ -304,6 +339,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#tutores">Tutores</a>
       <a href="#materias">Materias</a>
+      <a href="#horarios">Horarios</a>
       <a href="#preguntas">Preguntas</a>
       <a class="btn" href="#agendar">Agendar clase de prueba</a>
     </nav>
@@ -464,6 +500,23 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   </div>
 </section>
 
+<!-- SCHEDULE PICKER -->
+<section class="sched" id="horarios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Clase de prueba · 20 minutos gratis</b></p>
+      <h2>Elige el horario que mejor te funcione.</h2>
+    </div>
+    <div class="sched-filters" id="materia-filter" aria-label="Filtrar por materia"></div>
+    <div class="picked-banner" id="picked-banner">
+      <span>Seleccionaste: <strong id="picked-text"></strong></span>
+      <button onclick="document.getElementById('agendar').scrollIntoView({behavior:'smooth'})">Confirmar y dejar datos</button>
+    </div>
+    <div id="sched-list"></div>
+    <p class="sched-empty" id="sched-empty" style="display:none">No hay tutores disponibles para esta materia. Prueba con otra o déjanos tus datos y te buscamos uno.</p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="preguntas" style="padding-top:0">
   <div class="wrap grid faq">
@@ -500,6 +553,8 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <div class="f"><label for="f-mat">Materia</label>
         <select id="f-mat" name="materia"><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Economía</option><option>Teoría del Conocimiento</option><option>Monografía IB</option><option>Otra</option></select></div>
       <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
+      <input type="hidden" name="tutor" id="f-tutor" value="">
+      <input type="hidden" name="horario" id="f-horario" value="">
       <input type="hidden" name="_subject" value="Nueva inscripción Wizz Tutorías">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
@@ -517,7 +572,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   <div class="wrap">
     <img class="logo" src="assets/img/logo-wizz.png" alt="Wizz Tutorías">
     <nav aria-label="Pie de página">
-      <a href="#experiencia">Por qué Wizz</a><a href="#como-funciona">Cómo funciona</a><a href="#tutores">Tutores</a><a href="#materias">Materias</a><a href="#preguntas">Preguntas</a>
+      <a href="#experiencia">Por qué Wizz</a><a href="#como-funciona">Cómo funciona</a><a href="#tutores">Tutores</a><a href="#materias">Materias</a><a href="#horarios">Horarios</a><a href="#preguntas">Preguntas</a>
     </nav>
     <small><span>© 2026 Wizz Tutorías · Latinoamérica</span><span>¿Eres estudiante? Tu página llega pronto.</span></small>
   </div>
@@ -528,46 +583,138 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   var SHEET_ID='1YXIuTiIJqlhCss4Ra6J1VWurS42e6Q1FENe8pL-HmeQ';
   var GID='1630250331';
   var url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&gid='+GID;
+  var DISPLAY_NAMES={Sergio:'Sebastián',Matias:'Matías',Santiago:'Santiago',Álvaro:'Álvaro',Samira:'Samira',Alexandra:'Alexandra'};
+  var PHOTO_MAP={Samira:'tutor-01',Sebastián:'tutor-02',Alexandra:'tutor-03',Álvaro:'tutor-04',Matías:'tutor-05',Santiago:'tutor-06'};
+  var DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+  var DAYS_SHORT=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+  var SLOTS=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm','8pm-9pm','9pm-10pm'];
+  var SLOT_LABELS=['8–9','9–10','10–11','11–12','12–1','1–2','2–3','3–4','4–5','5–6','6–7','7–8','8–9','9–10'];
+  var SLOT_COL_START=5;
+  var picked=null;
+
   fetch(url).then(function(r){return r.text()}).then(function(txt){
     var json=JSON.parse(txt.replace(/^[^(]*\(/,'').replace(/\);?\s*$/,''));
     var rows=json.table.rows;
-    var nameCol=1,coursesCol=4;
-    var map={};
+    var tutors=[];
     rows.forEach(function(row){
-      var cells=row.c;
-      if(!cells[nameCol]||!cells[coursesCol])return;
-      var fullName=(cells[nameCol].v||'').trim();
+      var c=row.c;
+      if(!c[1]||!c[4])return;
+      var fullName=(c[1].v||'').trim();
       var firstName=fullName.split(' ')[0];
-      var courses=(cells[coursesCol].v||'').trim();
-      map[firstName]=courses.replace(/,\s*/g,' · ');
+      var displayName=DISPLAY_NAMES[firstName]||firstName;
+      var courses=(c[4].v||'').split(',').map(function(s){return s.trim()});
+      var schedule={};
+      SLOTS.forEach(function(slot,i){
+        var col=SLOT_COL_START+i;
+        var val=c[col]&&c[col].v?c[col].v:'';
+        var days={};
+        DAYS.forEach(function(d){if(val.indexOf(d)!==-1)days[d]=true});
+        schedule[slot]=days;
+      });
+      tutors.push({name:displayName,sheetName:firstName,courses:courses,schedule:schedule});
     });
+
     document.querySelectorAll('.tutor-courses').forEach(function(el){
       var key=el.getAttribute('data-tutor');
-      if(map[key])el.textContent=map[key];
+      tutors.forEach(function(t){
+        if(t.sheetName===key)el.textContent=t.courses.join(' · ');
+      });
     });
-  }).catch(function(){});
-})();
-(function(){
+
+    var allCourses={};
+    tutors.forEach(function(t){t.courses.forEach(function(c){allCourses[c]=true})});
+    var filterDiv=document.getElementById('materia-filter');
+    var btnAll=document.createElement('button');
+    btnAll.textContent='Todas';btnAll.className='active';
+    btnAll.onclick=function(){filterMat(null)};
+    filterDiv.appendChild(btnAll);
+    Object.keys(allCourses).sort().forEach(function(c){
+      var b=document.createElement('button');
+      b.textContent=c;
+      b.onclick=function(){filterMat(c)};
+      filterDiv.appendChild(b);
+    });
+
+    function filterMat(mat){
+      filterDiv.querySelectorAll('button').forEach(function(b){
+        b.className=(!mat&&b.textContent==='Todas')||(mat&&b.textContent===mat)?'active':'';
+      });
+      var list=document.getElementById('sched-list');
+      list.innerHTML='';
+      var shown=0;
+      tutors.forEach(function(t){
+        if(mat&&t.courses.indexOf(mat)===-1)return;
+        shown++;
+        var card=document.createElement('div');
+        card.className='tutor-sched visible';
+        var photo=PHOTO_MAP[t.name]||'tutor-01';
+        var head='<div class="tutor-sched-head">'
+          +'<img src="assets/img/tutores/'+photo+'.jpg" alt="'+t.name+'" width="56" height="56">'
+          +'<div><h3>'+t.name+'</h3><p class="soft">'+t.courses.join(' · ')+'</p></div></div>';
+        var grid='<div class="sched-grid"><div></div>';
+        DAYS_SHORT.forEach(function(d){grid+='<div class="day-head">'+d+'</div>'});
+        SLOTS.forEach(function(slot,si){
+          grid+='<div class="time-label">'+SLOT_LABELS[si]+'</div>';
+          DAYS.forEach(function(day){
+            var free=t.schedule[slot]&&t.schedule[slot][day];
+            var cls=free?'slot free':'slot taken';
+            var id=t.name+'-'+day+'-'+SLOT_LABELS[si];
+            grid+='<div class="'+cls+'" data-tutor="'+t.name+'" data-day="'+day+'" data-time="'+SLOT_LABELS[si]+'" data-id="'+id+'">'
+              +(free?'&#x2713;':'')+'</div>';
+          });
+        });
+        grid+='</div>';
+        card.innerHTML=head+grid;
+        list.appendChild(card);
+      });
+      document.getElementById('sched-empty').style.display=shown?'none':'block';
+      list.querySelectorAll('.slot.free').forEach(function(s){
+        s.addEventListener('click',function(){pickSlot(s)});
+      });
+    }
+
+    function pickSlot(el){
+      document.querySelectorAll('.slot.picked').forEach(function(s){s.className='slot free';s.innerHTML='&#x2713;'});
+      el.className='slot picked';
+      el.innerHTML='&#x2713;';
+      var tutor=el.getAttribute('data-tutor');
+      var day=el.getAttribute('data-day');
+      var time=el.getAttribute('data-time');
+      picked={tutor:tutor,day:day,time:time};
+      var txt=tutor+' · '+day+' '+time;
+      document.getElementById('picked-text').textContent=txt;
+      document.getElementById('picked-banner').className='picked-banner visible';
+      document.getElementById('f-tutor').value=tutor;
+      document.getElementById('f-horario').value=day+' '+time;
+    }
+
+    filterMat(null);
+  }).catch(function(err){
+    document.getElementById('sched-empty').style.display='block';
+    document.getElementById('sched-empty').textContent='No se pudieron cargar los horarios. Déjanos tus datos y te contactamos.';
+  });
+
   var form=document.getElementById('lead');
   form.querySelector('[name="_next"]').value=location.href+'#gracias';
   form.addEventListener('submit',function(e){
-    var n=form.querySelector('#f-nombre'), w=form.querySelector('#f-wsp');
+    e.preventDefault();
+    var n=form.querySelector('#f-nombre'),w=form.querySelector('#f-wsp');
     var note=document.getElementById('form-note');
     if(!n.value.trim()||!w.value.trim()){
-      e.preventDefault();
       note.textContent='Completa tu nombre y tu WhatsApp para poder escribirte.';
       (n.value.trim()?w:n).focus();
       return;
     }
     var btn=form.querySelector('button[type="submit"]');
-    btn.disabled=true;
-    btn.textContent='Enviando…';
+    btn.disabled=true;btn.textContent='Enviando…';
     var data=new FormData(form);
-    e.preventDefault();
     fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
     .then(function(r){
       if(r.ok){
-        form.innerHTML='<p class="ok">Gracias, '+n.value.trim().split(' ')[0].replace(/[<>&]/g,'')+'. Recibimos tus datos y te contactaremos pronto por WhatsApp.</p>';
+        var msg='Gracias, '+n.value.trim().split(' ')[0].replace(/[<>&]/g,'')+'.';
+        if(picked)msg+=' Registramos tu clase de prueba con '+picked.tutor+' el '+picked.day+' a las '+picked.time+'.';
+        msg+=' Te contactaremos pronto por WhatsApp para confirmar.';
+        form.innerHTML='<p class="ok">'+msg+'</p>';
       } else {
         note.textContent='Hubo un error. Intenta de nuevo o escríbenos directo por WhatsApp.';
         btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
