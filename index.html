@@ -541,7 +541,6 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   var SLOTS=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm','8pm-9pm','9pm-10pm'];
   var SLOT_LABELS=['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm'];
   var SLOT_COL_START=5;
-  var WIZZ_PHONE='51999106018';
 
   var availability={};
 
@@ -627,16 +626,6 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
         if(dia&&hora)msg+=' Registramos tu preferencia: '+dia+' a las '+hora+'.';
         msg+=' Te contactaremos pronto por WhatsApp para confirmar tu clase de prueba.';
         form.innerHTML='<p class="ok">'+msg+'</p>';
-        var wMsg='Nueva clase de prueba:%0A'
-          +'Nombre: '+payload.nombre+'%0A'
-          +'WhatsApp: '+payload.whatsapp+'%0A'
-          +'Email: '+(payload.email||'—')+'%0A'
-          +'Programa: '+payload.programa+'%0A'
-          +'Materia: '+payload.materia+'%0A'
-          +'Día: '+(dia||'—')+' · Hora: '+(hora||'—')+'%0A'
-          +'Nota: '+(payload.nota||'—');
-        var img=new Image();
-        img.src='https://api.callmebot.com/whatsapp.php?phone='+WIZZ_PHONE+'&text='+wMsg+'&apikey=FREE';
       } else {
         note.textContent='Hubo un error. Intenta de nuevo o escríbenos directo por WhatsApp.';
         btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
