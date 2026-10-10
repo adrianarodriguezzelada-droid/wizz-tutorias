@@ -301,11 +301,11 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
 .sched-grid{display:grid;grid-template-columns:72px repeat(7,minmax(0,1fr));gap:2px;font-size:var(--t-label);font-family:var(--mono)}
 .sched-grid .day-head{text-align:center;padding:var(--s1) 0;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-soft)}
 .sched-grid .time-label{padding:var(--s1) var(--s1) var(--s1) 0;text-align:right;color:var(--fg-soft);white-space:nowrap;align-self:center}
-.sched-grid .slot{padding:var(--s1);text-align:center;border-radius:4px;transition:all .15s}
-.sched-grid .slot.free{background:rgba(30,58,95,.08);color:var(--accent);cursor:pointer}
-.sched-grid .slot.free:hover{background:var(--accent);color:var(--on-accent);transform:scale(1.05)}
-.sched-grid .slot.taken{background:transparent;color:var(--line)}
-.sched-grid .slot.picked{background:var(--accent);color:var(--on-accent);font-weight:500}
+.sched-grid .slot{padding:var(--s1);text-align:center;border-radius:4px;transition:all .15s;min-height:28px}
+.sched-grid .slot.free{background:rgba(30,58,95,.15);color:var(--accent);cursor:pointer;border:1px solid rgba(30,58,95,.25);font-weight:500}
+.sched-grid .slot.free:hover{background:var(--accent);color:var(--on-accent);transform:scale(1.05);border-color:var(--accent)}
+.sched-grid .slot.taken{background:var(--bg);color:var(--line);font-size:.65rem}
+.sched-grid .slot.picked{background:var(--accent);color:var(--on-accent);font-weight:600;border:1px solid var(--accent);box-shadow:0 2px 8px rgba(30,58,95,.3)}
 .sched-empty{color:var(--fg-soft);font-size:var(--t-body);padding:var(--s4)}
 .picked-banner{background:var(--accent);color:var(--on-accent);padding:var(--s3) var(--s4);border-radius:8px;margin-bottom:var(--s6);
   display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
@@ -660,7 +660,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
             var cls=free?'slot free':'slot taken';
             var id=t.name+'-'+day+'-'+SLOT_LABELS[si];
             grid+='<div class="'+cls+'" data-tutor="'+t.name+'" data-day="'+day+'" data-time="'+SLOT_LABELS[si]+'" data-id="'+id+'">'
-              +(free?'&#x2713;':'')+'</div>';
+              +(free?'&#x2713;':'&#x2014;')+'</div>';
           });
         });
         grid+='</div>';
