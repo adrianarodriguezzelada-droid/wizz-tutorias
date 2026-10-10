@@ -494,7 +494,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <h2>Conoce al tutor de tu hijo.</h2>
       <p>Déjanos tus datos y te escribimos por WhatsApp para coordinar la clase de prueba. Sin compromiso.</p>
     </div>
-    <form id="lead" action="https://formsubmit.co/adriana.rodriguez.zelada@gmail.com" method="POST" novalidate>
+    <form id="lead" action="https://api.web3forms.com/submit" method="POST" novalidate>
       <div class="f"><label for="f-nombre">Tu nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required placeholder="Nombre y apellido"></div>
       <div class="f"><label for="f-wsp">WhatsApp</label><input id="f-wsp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+51 9XX XXX XXX"></div>
       <div class="f full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
@@ -507,11 +507,10 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <div class="f"><label for="f-hora">Hora preferida</label>
         <select id="f-hora" name="hora_preferida"><option value="">Elige una hora</option><option>8:00 am</option><option>9:00 am</option><option>10:00 am</option><option>11:00 am</option><option>12:00 pm</option><option>1:00 pm</option><option>2:00 pm</option><option>3:00 pm</option><option>4:00 pm</option><option>5:00 pm</option><option>6:00 pm</option><option>7:00 pm</option><option>8:00 pm</option><option>9:00 pm</option></select></div>
       <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
-      <input type="hidden" name="_subject" value="Nueva inscripción Wizz Tutorías">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="text" name="_honey" style="display:none">
-      <input type="hidden" name="_next" value="">
+      <input type="hidden" name="access_key" value="b8aceb0c-a574-4a9a-9e51-eb648b5cd941">
+      <input type="hidden" name="subject" value="Nueva inscripción Wizz Tutorías">
+      <input type="hidden" name="from_name" value="Wizz Tutorías Web">
+      <input type="checkbox" name="botcheck" style="display:none">
       <button class="btn" type="submit">Quiero agendar la clase de prueba</button>
       <p class="form-note" id="form-note">Respondemos en horario de oficina.</p>
     </form>
@@ -554,7 +553,6 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   }).catch(function(){});
 
   var form=document.getElementById('lead');
-  form.querySelector('[name="_next"]').value=location.href+'#gracias';
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var n=form.querySelector('#f-nombre'),w=form.querySelector('#f-wsp');
@@ -567,9 +565,11 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     var btn=form.querySelector('button[type="submit"]');
     btn.disabled=true;btn.textContent='Enviando…';
     var data=new FormData(form);
-    fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}})
-    .then(function(r){
-      if(r.ok){
+    fetch(form.action,{method:'POST',body:data,headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(Object.fromEntries(data))})
+    .then(function(r){return r.json()})
+    .then(function(json){
+      if(json.success){
         var nombre=n.value.trim().split(' ')[0].replace(/[<>&]/g,'');
         var dia=form.querySelector('#f-dia').value;
         var hora=form.querySelector('#f-hora').value;
