@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Tutorías 1:1 online para secundaria y Programa IB. Tutores que dominan su materia y saben explicarla. Más de 7 años acompañando familias.">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <link rel="icon" href="assets/img/logo-wizz.png">
 <title>Wizz Tutorías · Padres</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -503,9 +505,9 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <div class="f"><label for="f-mat">Materia</label>
         <select id="f-mat" name="materia"><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Economía</option><option>Teoría del Conocimiento</option><option>Monografía IB</option><option>Otra</option></select></div>
       <div class="f"><label for="f-dia">Día preferido para la clase</label>
-        <select id="f-dia" name="dia_preferido"><option value="">Elige un día</option><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select></div>
+        <select id="f-dia" name="dia_preferido"><option value="">Cargando horarios…</option></select></div>
       <div class="f"><label for="f-hora">Hora preferida</label>
-        <select id="f-hora" name="hora_preferida"><option value="">Elige una hora</option><option>8:00 am</option><option>9:00 am</option><option>10:00 am</option><option>11:00 am</option><option>12:00 pm</option><option>1:00 pm</option><option>2:00 pm</option><option>3:00 pm</option><option>4:00 pm</option><option>5:00 pm</option><option>6:00 pm</option><option>7:00 pm</option><option>8:00 pm</option><option>9:00 pm</option></select></div>
+        <select id="f-hora" name="hora_preferida"><option value="">Primero elige un día</option></select></div>
       <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
       <input type="hidden" name="access_key" value="b8aceb0c-a574-4a9a-9e51-eb648b5cd941">
       <input type="hidden" name="subject" value="Nueva inscripción Wizz Tutorías">
@@ -535,6 +537,13 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   var GID='1630250331';
   var url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&gid='+GID;
   var DISPLAY_NAMES={Sergio:'Sebastián',Matias:'Matías',Santiago:'Santiago',Álvaro:'Álvaro',Samira:'Samira',Alexandra:'Alexandra'};
+  var DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+  var SLOTS=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm','8pm-9pm','9pm-10pm'];
+  var SLOT_LABELS=['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm'];
+  var SLOT_COL_START=5;
+  var WIZZ_PHONE='51999106018';
+
+  var availability={};
 
   fetch(url).then(function(r){return r.text()}).then(function(txt){
     var json=JSON.parse(txt.replace(/^[^(]*\(/,'').replace(/\);?\s*$/,''));
@@ -544,13 +553,54 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       if(!c[1]||!c[4])return;
       var fullName=(c[1].v||'').trim();
       var firstName=fullName.split(' ')[0];
-      var displayName=DISPLAY_NAMES[firstName]||firstName;
       var courses=(c[4].v||'').split(',').map(function(s){return s.trim()});
       document.querySelectorAll('.tutor-courses').forEach(function(el){
         if(el.getAttribute('data-tutor')===firstName)el.textContent=courses.join(' · ');
       });
+      SLOTS.forEach(function(slot,i){
+        var col=SLOT_COL_START+i;
+        var val=c[col]&&c[col].v?c[col].v:'';
+        DAYS.forEach(function(d){
+          if(val.indexOf(d)!==-1){
+            if(!availability[d])availability[d]={};
+            availability[d][SLOT_LABELS[i]]=true;
+          }
+        });
+      });
     });
-  }).catch(function(){});
+
+    var selDia=document.getElementById('f-dia');
+    selDia.innerHTML='<option value="">Elige un día</option>';
+    DAYS.forEach(function(d){
+      if(availability[d]){
+        var opt=document.createElement('option');
+        opt.value=d;opt.textContent=d;
+        selDia.appendChild(opt);
+      }
+    });
+
+    selDia.addEventListener('change',function(){
+      var selHora=document.getElementById('f-hora');
+      selHora.innerHTML='<option value="">Elige una hora</option>';
+      var day=selDia.value;
+      if(!day||!availability[day])return;
+      SLOT_LABELS.forEach(function(label){
+        if(availability[day][label]){
+          var opt=document.createElement('option');
+          opt.value=label;opt.textContent=label;
+          selHora.appendChild(opt);
+        }
+      });
+    });
+  }).catch(function(){
+    var selDia=document.getElementById('f-dia');
+    selDia.innerHTML='<option value="">Elige un día</option>';
+    DAYS.forEach(function(d){
+      var opt=document.createElement('option');
+      opt.value=d;opt.textContent=d;
+      selDia.appendChild(opt);
+    });
+  });
 
   var form=document.getElementById('lead');
   form.addEventListener('submit',function(e){
@@ -564,9 +614,9 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     }
     var btn=form.querySelector('button[type="submit"]');
     btn.disabled=true;btn.textContent='Enviando…';
-    var data=new FormData(form);
-    fetch(form.action,{method:'POST',body:data,headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(Object.fromEntries(data))})
+    var payload=Object.fromEntries(new FormData(form));
+    fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)})
     .then(function(r){return r.json()})
     .then(function(json){
       if(json.success){
@@ -577,6 +627,16 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
         if(dia&&hora)msg+=' Registramos tu preferencia: '+dia+' a las '+hora+'.';
         msg+=' Te contactaremos pronto por WhatsApp para confirmar tu clase de prueba.';
         form.innerHTML='<p class="ok">'+msg+'</p>';
+        var wMsg='Nueva clase de prueba:%0A'
+          +'Nombre: '+payload.nombre+'%0A'
+          +'WhatsApp: '+payload.whatsapp+'%0A'
+          +'Email: '+(payload.email||'—')+'%0A'
+          +'Programa: '+payload.programa+'%0A'
+          +'Materia: '+payload.materia+'%0A'
+          +'Día: '+(dia||'—')+' · Hora: '+(hora||'—')+'%0A'
+          +'Nota: '+(payload.nota||'—');
+        var img=new Image();
+        img.src='https://api.callmebot.com/whatsapp.php?phone='+WIZZ_PHONE+'&text='+wMsg+'&apikey=FREE';
       } else {
         note.textContent='Hubo un error. Intenta de nuevo o escríbenos directo por WhatsApp.';
         btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
