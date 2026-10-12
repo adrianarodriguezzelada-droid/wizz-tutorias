@@ -544,7 +544,26 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   var TZ_COL=22;
   var TUTOR_TZ={Alexandra:'Europe/Madrid'};
   var BASE_TZ='America/Lima';
-  var TZ_MAP={Lima:'America/Lima',Madrid:'Europe/Madrid','Buenos Aires':'America/Argentina/Buenos_Aires','Bogotá':'America/Bogota','México':'America/Mexico_City'};
+  var TZ_MAP={
+    'Peru':'America/Lima','Perú':'America/Lima','Lima':'America/Lima',
+    'España':'Europe/Madrid','Spain':'Europe/Madrid','Madrid':'Europe/Madrid',
+    'Colombia':'America/Bogota','Bogotá':'America/Bogota',
+    'México':'America/Mexico_City','Mexico':'America/Mexico_City',
+    'Argentina':'America/Argentina/Buenos_Aires','Buenos Aires':'America/Argentina/Buenos_Aires',
+    'Chile':'America/Santiago','Santiago de Chile':'America/Santiago',
+    'Ecuador':'America/Guayaquil','Guayaquil':'America/Guayaquil',
+    'Bolivia':'America/La_Paz','La Paz':'America/La_Paz',
+    'Costa Rica':'America/Costa_Rica',
+    'Panamá':'America/Panama','Panama':'America/Panama',
+    'Estados Unidos (Este)':'America/New_York','US East':'America/New_York','Nueva York':'America/New_York',
+    'Estados Unidos (Centro)':'America/Chicago','US Central':'America/Chicago','Chicago':'America/Chicago',
+    'Estados Unidos (Oeste)':'America/Los_Angeles','US West':'America/Los_Angeles','Los Angeles':'America/Los_Angeles',
+    'Reino Unido':'Europe/London','UK':'Europe/London','Londres':'Europe/London',
+    'Francia':'Europe/Paris','Paris':'Europe/Paris',
+    'Alemania':'Europe/Berlin','Berlin':'Europe/Berlin',
+    'Italia':'Europe/Rome','Roma':'Europe/Rome',
+    'Portugal':'Europe/Lisbon','Lisboa':'Europe/Lisbon'
+  };
   function tzOffset(from,to){try{var n=new Date();return Math.round((new Date(n.toLocaleString('en-US',{timeZone:to}))-new Date(n.toLocaleString('en-US',{timeZone:from})))/36e5)}catch(e){return 0}}
   function tutorTeaches(courses,materia){
     if(!materia||materia==='Otra')return true;
