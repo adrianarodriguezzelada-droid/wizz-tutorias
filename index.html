@@ -503,9 +503,9 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <div class="f"><label for="f-prog">Programa</label>
         <select id="f-prog" name="programa"><option>Secundaria</option><option>Pre-IB</option><option>Programa IB</option></select></div>
       <div class="f"><label for="f-mat">Materia</label>
-        <select id="f-mat" name="materia"><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Economía</option><option>Teoría del Conocimiento</option><option>Monografía IB</option><option>Otra</option></select></div>
-      <div class="f"><label for="f-dia">Día preferido para la clase</label>
-        <select id="f-dia" name="dia_preferido"><option value="">Cargando horarios…</option></select></div>
+        <select id="f-mat" name="materia"><option value="">Elige una materia</option><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Economía</option><option>Teoría del Conocimiento</option><option>Monografía IB</option><option>Otra</option></select></div>
+      <div class="f"><label for="f-dia">Día preferido</label>
+        <select id="f-dia" name="dia_preferido"><option value="">Primero elige una materia</option></select></div>
       <div class="f"><label for="f-hora">Hora preferida</label>
         <select id="f-hora" name="hora_preferida"><option value="">Primero elige un día</option></select></div>
       <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
@@ -541,8 +541,19 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   var SLOTS=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm','8pm-9pm','9pm-10pm'];
   var SLOT_LABELS=['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm'];
   var SLOT_COL_START=5;
+  var TZ_COL=22;
+  var TUTOR_TZ={Alexandra:'Europe/Madrid'};
+  var BASE_TZ='America/Lima';
+  var TZ_MAP={Lima:'America/Lima',Madrid:'Europe/Madrid','Buenos Aires':'America/Argentina/Buenos_Aires','Bogotá':'America/Bogota','México':'America/Mexico_City'};
+  function tzOffset(from,to){try{var n=new Date();return Math.round((new Date(n.toLocaleString('en-US',{timeZone:to}))-new Date(n.toLocaleString('en-US',{timeZone:from})))/36e5)}catch(e){return 0}}
+  function tutorTeaches(courses,materia){
+    if(!materia||materia==='Otra')return true;
+    var m=materia.toLowerCase();
+    return courses.some(function(c){var cl=c.toLowerCase();return cl.indexOf(m)!==-1||m.indexOf(cl)!==-1})
+  }
 
-  var availability={};
+  var tutorData=[];
+  var currentAvail={};
 
   fetch(url).then(function(r){return r.text()}).then(function(txt){
     var json=JSON.parse(txt.replace(/^[^(]*\(/,'').replace(/\);?\s*$/,''));
@@ -552,39 +563,71 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       if(!c[1]||!c[4])return;
       var fullName=(c[1].v||'').trim();
       var firstName=fullName.split(' ')[0];
-      var courses=(c[4].v||'').split(',').map(function(s){return s.trim()});
+      var courses=(c[4].v||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
+
       document.querySelectorAll('.tutor-courses').forEach(function(el){
         if(el.getAttribute('data-tutor')===firstName)el.textContent=courses.join(' · ');
       });
+
+      var tzRaw=c[TZ_COL]&&c[TZ_COL].v?c[TZ_COL].v.trim():'';
+      var tz=TZ_MAP[tzRaw]||tzRaw||TUTOR_TZ[firstName]||'';
+      var off=tz&&tz!==BASE_TZ?tzOffset(tz,BASE_TZ):0;
+
+      var avail={};
       SLOTS.forEach(function(slot,i){
         var col=SLOT_COL_START+i;
         var val=c[col]&&c[col].v?c[col].v:'';
+        if(!val)return;
+        var ni=i+off;
+        if(ni<0||ni>=SLOTS.length)return;
         DAYS.forEach(function(d){
           if(val.indexOf(d)!==-1){
-            if(!availability[d])availability[d]={};
-            availability[d][SLOT_LABELS[i]]=true;
+            if(!avail[d])avail[d]={};
+            avail[d][SLOT_LABELS[ni]]=true;
           }
         });
       });
+
+      tutorData.push({courses:courses,avail:avail});
     });
 
+    function buildAvail(materia){
+      var merged={};
+      tutorData.forEach(function(td){
+        if(!tutorTeaches(td.courses,materia))return;
+        Object.keys(td.avail).forEach(function(day){
+          if(!merged[day])merged[day]={};
+          Object.keys(td.avail[day]).forEach(function(h){merged[day][h]=true});
+        });
+      });
+      return merged;
+    }
+
+    var selMat=document.getElementById('f-mat');
     var selDia=document.getElementById('f-dia');
-    selDia.innerHTML='<option value="">Elige un día</option>';
-    DAYS.forEach(function(d){
-      if(availability[d]){
-        var opt=document.createElement('option');
-        opt.value=d;opt.textContent=d;
-        selDia.appendChild(opt);
-      }
+    var selHora=document.getElementById('f-hora');
+
+    selMat.addEventListener('change',function(){
+      selDia.innerHTML='<option value="">Elige un día</option>';
+      selHora.innerHTML='<option value="">Primero elige un día</option>';
+      var materia=selMat.value;
+      if(!materia)return;
+      currentAvail=buildAvail(materia);
+      DAYS.forEach(function(d){
+        if(currentAvail[d]&&Object.keys(currentAvail[d]).length){
+          var opt=document.createElement('option');
+          opt.value=d;opt.textContent=d;
+          selDia.appendChild(opt);
+        }
+      });
     });
 
     selDia.addEventListener('change',function(){
-      var selHora=document.getElementById('f-hora');
       selHora.innerHTML='<option value="">Elige una hora</option>';
       var day=selDia.value;
-      if(!day||!availability[day])return;
+      if(!day||!currentAvail[day])return;
       SLOT_LABELS.forEach(function(label){
-        if(availability[day][label]){
+        if(currentAvail[day][label]){
           var opt=document.createElement('option');
           opt.value=label;opt.textContent=label;
           selHora.appendChild(opt);
