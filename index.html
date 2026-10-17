@@ -695,7 +695,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     resetState();
   }
   function resetState(){
-    state={done:false,programa:'',nivel:'',materia:'',tema:'',dayKey:'',dayLabel:'',hour:0,hourLabel:'',
+    state={done:false,programa:'',grado:'',nivel:'',materia:'',tema:'',dayKey:'',dayLabel:'',hour:0,hourLabel:'',
       nombre:'',prefijo:'+51',telefono:'',email:'',nota:''};
   }
 
@@ -792,7 +792,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     Object.keys(cfg).forEach(function(p){addOpt(ps,p,p)});
     ps.value=state.programa;
     ps.addEventListener('change',function(){
-      state.programa=this.value;state.materia='';state.nivel='';state.dayKey='';state.dayLabel='';state.hour=0;state.hourLabel='';
+      state.programa=this.value;state.grado='';state.materia='';state.nivel='';state.dayKey='';state.dayLabel='';state.hour=0;state.hourLabel='';
       renderForm();
     });
     pf.appendChild(ps);
@@ -816,17 +816,31 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     row2.appendChild(mf);
     bodyEl.appendChild(row2);
 
-    /* nivel IB (optional) */
-    if(state.programa==='IB'&&cfg.IB&&cfg.IB.niveles){
-      var nvf=mk('div','mdl-field');
-      nvf.appendChild(mkLabel('Nivel (opcional)','mdl-nivel'));
-      var nvs=document.createElement('select');nvs.id='mdl-nivel';
-      addOpt(nvs,'','No sé / No importa');
-      cfg.IB.niveles.forEach(function(n){addOpt(nvs,n,n)});
-      nvs.value=state.nivel;
-      nvs.addEventListener('change',function(){state.nivel=this.value});
-      nvf.appendChild(nvs);
-      bodyEl.appendChild(nvf);
+    /* grado + nivel IB */
+    if(state.programa&&cfg[state.programa]&&cfg[state.programa].anios){
+      var rowGN=mk('div','mdl-row');
+      var gf=mk('div','mdl-field');
+      gf.appendChild(mkLabel('Grado','mdl-grado'));
+      var gs=document.createElement('select');gs.id='mdl-grado';
+      addOpt(gs,'','Elige el grado');
+      cfg[state.programa].anios.forEach(function(a){addOpt(gs,a,a)});
+      gs.value=state.grado;
+      gs.addEventListener('change',function(){state.grado=this.value});
+      gf.appendChild(gs);
+      rowGN.appendChild(gf);
+
+      if(state.programa==='IB'&&cfg.IB.niveles){
+        var nvf=mk('div','mdl-field');
+        nvf.appendChild(mkLabel('Nivel (opcional)','mdl-nivel'));
+        var nvs=document.createElement('select');nvs.id='mdl-nivel';
+        addOpt(nvs,'','No sé / No importa');
+        cfg.IB.niveles.forEach(function(n){addOpt(nvs,n,n)});
+        nvs.value=state.nivel;
+        nvs.addEventListener('change',function(){state.nivel=this.value});
+        nvf.appendChild(nvs);
+        rowGN.appendChild(nvf);
+      }
+      bodyEl.appendChild(rowGN);
     }
 
     /* tema (optional) */
@@ -924,6 +938,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       telefono:state.prefijo+' '+state.telefono.trim(),
       email:state.email||'',
       programa:state.programa,
+      grado:state.grado||'',
       materia:state.materia,
       nivel_ib:state.nivel||'',
       tema:state.tema||'',
