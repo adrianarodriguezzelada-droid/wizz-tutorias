@@ -1,0 +1,43 @@
+{
+  "programas": {
+    "Secundaria": {
+      "anios": ["1ro", "2do", "3ro", "4to", "5to"],
+      "materias": [
+        "Matemáticas",
+        "Física",
+        "Química",
+        "Biología",
+        "Historia",
+        "Lengua y Literatura",
+        "Inglés",
+        "Comunicaciones",
+        "Programación"
+      ]
+    },
+    "IB": {
+      "anios": ["Diploma 1er año", "Diploma 2do año"],
+      "niveles": ["SL", "HL"],
+      "materias": [
+        "Matemáticas",
+        "Física",
+        "Biología",
+        "Historia",
+        "Literatura",
+        "Inglés B",
+        "Business Management",
+        "ESS"
+      ]
+    }
+  },
+  "prefijoPais": [
+    { "codigo": "+51", "pais": "Perú", "digitos": 9 },
+    { "codigo": "+52", "pais": "México", "digitos": 10 },
+    { "codigo": "+57", "pais": "Colombia", "digitos": 10 },
+    { "codigo": "+54", "pais": "Argentina", "digitos": 10 },
+    { "codigo": "+56", "pais": "Chile", "digitos": 9 },
+    { "codigo": "+593", "pais": "Ecuador", "digitos": 9 },
+    { "codigo": "+591", "pais": "Bolivia", "digitos": 8 },
+    { "codigo": "+1", "pais": "EE.UU.", "digitos": 10 },
+    { "codigo": "+34", "pais": "España", "digitos": 9 }
+  ]
+}

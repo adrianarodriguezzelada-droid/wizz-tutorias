@@ -24,9 +24,7 @@ gtag('js',new Date());gtag('config','G-349QRD3K9Q');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: 12-col asymmetric grid on cream, left-anchored type (break the center), full-width media slots between quiet text sections. 8pt spacing. */
 :root{
-  /* color: base crema (logo) · texto negro · acento azul tinta */
   --bg:#F6F1EB;
   --bg-alt:#ECE5DB;
   --fg:#141413;
@@ -40,20 +38,16 @@ gtag('js',new Date());gtag('config','G-349QRD3K9Q');
   --panel-line:rgba(246,241,235,.22);
   --line:rgba(20,20,19,.12);
   --logo-filter:none;
-
-  /* type: una sola familia display/cuerpo + mono utilitaria */
   --font:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --mono:'Geist Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
-  --t-label:.8125rem;   /* 13 */
-  --t-small:1rem;       /* 16 */
-  --t-body:1.125rem;    /* 18 */
-  --t-lead:1.5rem;      /* 24 */
-  --t-h3:2rem;          /* 32 */
+  --t-label:.8125rem;
+  --t-small:1rem;
+  --t-body:1.125rem;
+  --t-lead:1.5rem;
+  --t-h3:2rem;
   --t-h2:clamp(2.25rem,4.6vw,3.5rem);
   --t-h1:clamp(2.75rem,7.4vw,6.5rem);
   --t-say:clamp(2rem,5.4vw,4.5rem);
-
-  /* 8-point spacing */
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;--s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;--s20:160px;--s24:192px;
   --gutter:clamp(16px,3.2vw,40px);
   --max:1360px;
@@ -84,6 +78,7 @@ body{
   -webkit-font-smoothing:antialiased;overflow-x:clip;
   padding-inline:var(--gutter);
 }
+body.modal-open{overflow:hidden;position:fixed;width:100%;touch-action:none}
 h1,h2,h3,p,ul,ol,figure,dl,dd{margin:0}
 ul,ol{padding:0;list-style:none}
 a{color:inherit}
@@ -159,7 +154,6 @@ section{padding-block:var(--s20)}
 .sec-head{display:grid;gap:var(--s3);margin-bottom:var(--s10)}
 .sec-head h2{font-size:var(--t-h2)}
 
-/* spaced statements (one thought per line) */
 .say{row-gap:var(--s16)}
 .say p{min-width:0;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;max-width:none;text-wrap:balance}
 .say .s1{grid-column:1 / span 7}
@@ -170,14 +164,12 @@ section{padding-block:var(--s20)}
 .say .dim{color:var(--fg-soft)}
 @media (max-width:900px){.say{row-gap:var(--s10);grid-template-columns:minmax(0,1fr)}.say p{grid-column:1 / -1!important;max-width:100%!important}}
 
-/* experience split */
 .exp .media{grid-column:1 / span 7}
 .exp .txt{grid-column:9 / span 4;align-self:end;display:grid;gap:var(--s3)}
 .exp h2{font-size:var(--t-h2)}
 .exp .big{font-size:clamp(5rem,12vw,10rem);font-weight:300;letter-spacing:-.06em;line-height:.9;color:var(--accent)}
 @media (max-width:900px){.exp .media,.exp .txt{grid-column:1 / -1}.exp .txt{margin-top:var(--s6)}}
 
-/* pillars */
 .pillars{row-gap:var(--s10)}
 .pillar{display:grid;align-content:start;gap:var(--s2);padding-top:var(--s3);border-top:1px solid var(--line)}
 .pillar h3{font-size:var(--t-h3)}
@@ -187,7 +179,6 @@ section{padding-block:var(--s20)}
 .pillar:nth-child(3){grid-column:9 / span 4;margin-top:var(--s20)}
 @media (max-width:900px){.pillar{grid-column:1 / -1!important;margin-top:0!important}}
 
-/* steps */
 .steps .media{grid-column:1 / span 5;align-self:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px)}
 .steps ol{grid-column:7 / span 6;display:grid;gap:var(--s10)}
 .steps li{display:grid;grid-template-columns:64px 1fr;gap:var(--s3);padding-top:var(--s3);border-top:1px solid var(--line)}
@@ -196,7 +187,6 @@ section{padding-block:var(--s20)}
 .steps p{color:var(--fg-soft);max-width:44ch}
 @media (max-width:900px){.steps .media{grid-column:1 / -1;position:relative}.steps ol{grid-column:1 / -1;margin-top:var(--s8)}}
 
-/* brand statement */
 .brand{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
 .brand .spark{color:var(--panel-fg);width:48px;height:28px}
 .brand p{grid-column:2 / span 10;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;text-wrap:balance;margin-top:var(--s5)}
@@ -204,7 +194,6 @@ section{padding-block:var(--s20)}
 .brand .spark-wrap{grid-column:2 / span 10}
 @media (max-width:900px){.brand p,.brand .spark-wrap{grid-column:1 / -1}}
 
-/* tutors */
 .tutors .intro{grid-column:1 / span 6;display:grid;gap:var(--s3);margin-bottom:var(--s10)}
 .tutors .intro h2{font-size:var(--t-h2)}
 .tutors .photos{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6) var(--s3)}
@@ -228,7 +217,6 @@ section{padding-block:var(--s20)}
   .profiles{grid-template-columns:1fr}
 }
 
-/* subjects */
 .subjects .media{grid-column:8 / span 5;grid-row:1 / span 2}
 .subjects .sec-head{grid-column:1 / span 6}
 .cols{grid-column:1 / span 6;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
@@ -241,7 +229,6 @@ section{padding-block:var(--s20)}
   .cols{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 }
 
-/* faq */
 .faq .sec-head{grid-column:1 / span 4;align-self:start}
 .faq .list{grid-column:6 / span 7}
 details{border-top:1px solid var(--line)}
@@ -253,26 +240,13 @@ details[open] summary::after{transform:rotate(45deg)}
 details p{padding-bottom:var(--s3);color:var(--fg-soft);max-width:60ch}
 @media (max-width:900px){.faq .sec-head,.faq .list{grid-column:1 / -1}}
 
-/* cta */
+/* ── CTA bottom (now just a button) ── */
 .cta{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
-.cta .left{grid-column:1 / span 5;display:grid;gap:var(--s3);align-content:start}
+.cta .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s3)}
 .cta h2{font-size:var(--t-h2)}
-.cta .left p{color:var(--panel-soft);max-width:36ch}
+.cta p{color:var(--panel-soft);max-width:36ch}
 .cta .label{color:var(--panel-soft)}
-form{grid-column:7 / span 6;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3)}
-.f{display:grid;gap:var(--s1);min-width:0}
-.f.full{grid-column:1 / -1}
-.f label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--panel-soft)}
-.f input,.f select,.f textarea{width:100%;font:400 var(--t-body)/1.4 var(--font);color:var(--panel-fg);background:transparent;
-  border:0;border-bottom:1px solid var(--panel-line);padding:var(--s1) 0 var(--s2);border-radius:0;appearance:none;-webkit-appearance:none}
-.f select option{color:#141413}
-.f textarea{resize:vertical;min-height:96px}
-.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-bottom-color:var(--panel-fg)}
-.f input::placeholder,.f textarea::placeholder{color:var(--panel-soft);opacity:.7}
-.cta .btn{background:var(--panel-fg);color:var(--panel);justify-self:start;grid-column:1 / -1}
-.form-note{grid-column:1 / -1;font-size:var(--t-small);color:var(--panel-soft)}
-.ok{grid-column:1 / -1;font-size:var(--t-lead);line-height:1.35}
-@media (max-width:900px){.cta .left,form{grid-column:1 / -1}form{margin-top:var(--s8);grid-template-columns:1fr}}
+.cta .btn{background:var(--panel-fg);color:var(--panel)}
 
 /* footer */
 footer{padding-block:var(--s10) var(--s6)}
@@ -282,7 +256,7 @@ footer a{font-size:var(--t-small);text-decoration:none;color:var(--fg-soft)}
 footer a:hover{color:var(--fg)}
 footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-top:var(--s4);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
 .full-media{padding-block:0}
-/* reel: fotos reales en movimiento lento (reemplaza el video hero) */
+
 .reel{padding-block:0 var(--s4);margin-inline:calc(var(--gutter) * -1);overflow:hidden}
 .reel-track{display:flex;width:max-content;animation:drift 60s linear infinite}
 .reel:hover .reel-track{animation-play-state:paused}
@@ -297,6 +271,52 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
 @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.06)}}
 @media (prefers-reduced-motion:reduce){.reel-track,.reel-card img{animation:none}.reel{overflow-x:auto}}
 
+/* ══════════════════════════════════════════
+   MODAL — clase de prueba (single view)
+   ══════════════════════════════════════════ */
+.mdl-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(20,20,19,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.mdl-overlay.open{display:flex;align-items:center;justify-content:center}
+.mdl{position:relative;width:100%;max-width:560px;max-height:min(92vh,92dvh);background:var(--bg);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.18)}
+@media (max-width:767px){
+  .mdl{max-width:100%;max-height:100dvh;height:100dvh;border-radius:0}
+}
+.mdl-head{display:flex;align-items:center;justify-content:space-between;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);flex-shrink:0}
+.mdl-head h2{font-size:var(--t-lead);letter-spacing:-.02em;font-weight:500}
+.mdl-close{background:none;border:0;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:var(--fg-soft);font-size:1.5rem;line-height:1;transition:background .15s}
+.mdl-close:hover{background:var(--bg-alt)}
+.mdl-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:var(--s3)}
+.mdl-body::-webkit-scrollbar{width:4px}
+.mdl-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+
+/* form fields */
+.mdl-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-bottom:var(--s3)}
+@media (max-width:500px){.mdl-row{grid-template-columns:1fr}}
+.mdl-field{margin-bottom:var(--s3)}
+.mdl-row .mdl-field{margin-bottom:0}
+.mdl-field label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--fg-soft);display:block;margin-bottom:var(--s1)}
+.mdl-field input,.mdl-field textarea,.mdl-field select{width:100%;font:400 var(--t-body)/1.4 var(--font);color:var(--fg);background:var(--bg-alt);
+  border:2px solid transparent;padding:var(--s1) var(--s2);border-radius:8px;transition:border-color .15s}
+.mdl-field select{cursor:pointer;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235C564E' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:var(--s4)}
+.mdl-field input:focus,.mdl-field textarea:focus,.mdl-field select:focus{outline:none;border-color:var(--accent)}
+.mdl-field input::placeholder,.mdl-field textarea::placeholder{color:var(--fg-soft);opacity:.6}
+.mdl-field textarea{resize:vertical;min-height:72px}
+.mdl-field .hint{font-size:var(--t-label);color:var(--fg-soft);margin-top:4px}
+.phone-row{display:flex;gap:var(--s1)}
+.phone-row select{width:100px;padding-right:var(--s3)}
+.phone-row input{flex:1}
+.mdl-foot{padding:0 var(--s3) var(--s3);flex-shrink:0}
+.mdl-foot .btn{width:100%;justify-content:center;min-height:56px}
+.mdl-fine{font-size:var(--t-label);color:var(--fg-soft);text-align:center;margin-top:var(--s2)}
+.mdl-error{color:#c0392b;font-size:var(--t-small);text-align:center;padding:var(--s1) 0}
+
+/* done screen */
+.done-screen{text-align:center;padding:var(--s6) var(--s3)}
+.done-screen h2{font-size:var(--t-h3);margin-bottom:var(--s3)}
+.done-screen p{color:var(--fg-soft);margin-bottom:var(--s4)}
+.done-screen .btn{margin-bottom:var(--s2)}
 
 </style>
 </head>
@@ -320,7 +340,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
       <a href="#tutores">Tutores</a>
       <a href="#materias">Materias</a>
       <a href="#preguntas">Preguntas</a>
-      <a class="btn" href="#agendar">Agendar clase de prueba</a>
+      <button class="btn open-modal-btn" type="button">Agendar clase de prueba</button>
     </nav>
   </div>
 </header>
@@ -340,7 +360,7 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
     <div class="hero-side">
       <p>Tutores que dominan su materia y saben explicársela a tu hijo. Lo elegimos pensando en cómo aprende él.</p>
       <div class="hero-actions">
-        <a class="btn" href="#agendar">Agendar clase de prueba</a>
+        <button class="btn open-modal-btn" type="button">Agendar clase de prueba</button>
         <a class="link" href="#como-funciona">Ver cómo funciona</a>
       </div>
     </div>
@@ -479,8 +499,6 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   </div>
 </section>
 
-<!-- SCHEDULE PICKER -->
-
 <!-- FAQ -->
 <section id="preguntas" style="padding-top:0">
   <div class="wrap grid faq">
@@ -502,32 +520,11 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
 
 <!-- CTA -->
 <section class="cta" id="agendar">
-  <div class="wrap grid">
-    <div class="left">
-      <p class="label">Clase de prueba</p>
-      <h2>Conoce al tutor de tu hijo.</h2>
-      <p>Déjanos tus datos y te escribimos por WhatsApp para coordinar la clase de prueba. Sin compromiso.</p>
-    </div>
-    <form id="lead" action="https://api.web3forms.com/submit" method="POST" novalidate>
-      <div class="f"><label for="f-nombre">Tu nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required placeholder="Nombre y apellido"></div>
-      <div class="f"><label for="f-wsp">WhatsApp</label><input id="f-wsp" name="whatsapp" type="tel" autocomplete="tel" required placeholder="+51 9XX XXX XXX"></div>
-      <div class="f full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="tu@email.com"></div>
-      <div class="f"><label for="f-prog">Programa</label>
-        <select id="f-prog" name="programa"><option>Secundaria</option><option>Pre-IB</option><option>Programa IB</option></select></div>
-      <div class="f"><label for="f-mat">Materia</label>
-        <select id="f-mat" name="materia"><option value="">Elige una materia</option><option>Matemáticas</option><option>Física</option><option>Química</option><option>Biología</option><option>Historia</option><option>Lengua y Literatura</option><option>Inglés</option><option>Comunicaciones</option><option>Business Management</option><option>ESS</option><option>Programación</option><option>Otra</option></select></div>
-      <div class="f"><label for="f-dia">Día preferido</label>
-        <select id="f-dia" name="dia_preferido"><option value="">Primero elige una materia</option></select></div>
-      <div class="f"><label for="f-hora">Hora preferida</label>
-        <select id="f-hora" name="hora_preferida"><option value="">Primero elige un día</option></select></div>
-      <div class="f full"><label for="f-nota">Cuéntanos de tu hijo (opcional)</label><textarea id="f-nota" name="nota" placeholder="Qué le cuesta, cómo aprende mejor, qué buscas en un tutor"></textarea></div>
-      <input type="hidden" name="access_key" value="b8aceb0c-a574-4a9a-9e51-eb648b5cd941">
-      <input type="hidden" name="subject" value="Nueva inscripción Wizz Tutorías">
-      <input type="hidden" name="from_name" value="Wizz Tutorías Web">
-      <input type="checkbox" name="botcheck" style="display:none">
-      <button class="btn" type="submit">Quiero agendar la clase de prueba</button>
-      <p class="form-note" id="form-note">Respondemos en horario de oficina.</p>
-    </form>
+  <div class="wrap" style="padding-block:var(--s12)">
+    <p class="label">Clase de prueba</p>
+    <h2>Conoce al tutor de tu hijo.</h2>
+    <p>Sin compromiso. Reserva en menos de un minuto.</p>
+    <button class="btn open-modal-btn" type="button" style="margin-top:var(--s3)">Agendar clase de prueba</button>
   </div>
 </section>
 
@@ -543,15 +540,27 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   </div>
 </footer>
 
+<!-- ═══ MODAL ═══ -->
+<div class="mdl-overlay" id="mdl-overlay" role="dialog" aria-modal="true" aria-label="Agendar clase de prueba">
+  <div class="mdl" id="mdl">
+    <div class="mdl-head">
+      <h2>Agendar clase de prueba</h2>
+      <button class="mdl-close" type="button" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="mdl-body" id="mdl-body"></div>
+    <div class="mdl-foot" id="mdl-foot"></div>
+  </div>
+</div>
+
 <script>
 (function(){
+  /* ── Config ── */
+  var CFG=null;
   var SHEET_ID='1YXIuTiIJqlhCss4Ra6J1VWurS42e6Q1FENe8pL-HmeQ';
   var GID='1630250331';
-  var url='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&gid='+GID;
-  var DISPLAY_NAMES={Sergio:'Sebastián',Matias:'Matías',Santiago:'Santiago',Álvaro:'Álvaro',Samira:'Samira',Alexandra:'Alexandra'};
   var DAYS=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
   var SLOTS=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm','8pm-9pm','9pm-10pm'];
-  var SLOT_LABELS=['8:00 am','9:00 am','10:00 am','11:00 am','12:00 pm','1:00 pm','2:00 pm','3:00 pm','4:00 pm','5:00 pm','6:00 pm','7:00 pm','8:00 pm','9:00 pm'];
+  var SLOT_HOURS=[8,9,10,11,12,13,14,15,16,17,18,19,20,21];
   var SLOT_COL_START=5;
   var TZ_COL=22;
   var TUTOR_TZ={Alexandra:'Europe/Madrid'};
@@ -578,138 +587,375 @@ footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-to
   };
   function tzOffset(from,to){try{var n=new Date();return Math.round((new Date(n.toLocaleString('en-US',{timeZone:to}))-new Date(n.toLocaleString('en-US',{timeZone:from})))/36e5)}catch(e){return 0}}
   function tutorTeaches(courses,materia){
-    if(!materia||materia==='Otra')return true;
+    if(!materia)return true;
     var m=materia.toLowerCase();
     return courses.some(function(c){var cl=c.toLowerCase();return cl.indexOf(m)!==-1||m.indexOf(cl)!==-1})
   }
 
+  /* ── Tutor data from sheet ── */
   var tutorData=[];
-  var currentAvail={};
+  var sheetReady=false;
+  var sheetUrl='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json&gid='+GID;
 
-  fetch(url).then(function(r){return r.text()}).then(function(txt){
-    var json=JSON.parse(txt.replace(/^[^(]*\(/,'').replace(/\);?\s*$/,''));
-    var rows=json.table.rows;
-    rows.forEach(function(row){
-      var c=row.c;
-      if(!c[1]||!c[4])return;
-      var fullName=(c[1].v||'').trim();
-      var firstName=fullName.split(' ')[0];
-      var courses=(c[4].v||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
-
-      document.querySelectorAll('.tutor-courses').forEach(function(el){
-        if(el.getAttribute('data-tutor')===firstName)el.textContent=courses.join(' · ');
-      });
-
-      var tzRaw=c[TZ_COL]&&c[TZ_COL].v?c[TZ_COL].v.trim():'';
-      var tz=TZ_MAP[tzRaw]||tzRaw||TUTOR_TZ[firstName]||'';
-      var off=tz&&tz!==BASE_TZ?tzOffset(tz,BASE_TZ):0;
-
-      var avail={};
-      SLOTS.forEach(function(slot,i){
-        var col=SLOT_COL_START+i;
-        var val=c[col]&&c[col].v?c[col].v:'';
-        if(!val)return;
-        var ni=i+off;
-        if(ni<0||ni>=SLOTS.length)return;
-        DAYS.forEach(function(d){
-          if(val.indexOf(d)!==-1){
-            if(!avail[d])avail[d]={};
-            avail[d][SLOT_LABELS[ni]]=true;
-          }
+  function loadSheet(){
+    return fetch(sheetUrl).then(function(r){return r.text()}).then(function(txt){
+      var json=JSON.parse(txt.replace(/^[^(]*\(/,'').replace(/\);?\s*$/,''));
+      var rows=json.table.rows;
+      rows.forEach(function(row){
+        var c=row.c;
+        if(!c[1]||!c[4])return;
+        var fullName=(c[1].v||'').trim();
+        var firstName=fullName.split(' ')[0];
+        var courses=(c[4].v||'').split(',').map(function(s){return s.trim()}).filter(Boolean);
+        document.querySelectorAll('.tutor-courses').forEach(function(el){
+          if(el.getAttribute('data-tutor')===firstName)el.textContent=courses.join(' · ');
         });
-      });
-
-      tutorData.push({courses:courses,avail:avail});
-    });
-
-    function buildAvail(materia){
-      var merged={};
-      tutorData.forEach(function(td){
-        if(!tutorTeaches(td.courses,materia))return;
-        Object.keys(td.avail).forEach(function(day){
-          if(!merged[day])merged[day]={};
-          Object.keys(td.avail[day]).forEach(function(h){merged[day][h]=true});
+        var tzRaw=c[TZ_COL]&&c[TZ_COL].v?c[TZ_COL].v.trim():'';
+        var tz=TZ_MAP[tzRaw]||tzRaw||TUTOR_TZ[firstName]||'';
+        var off=tz&&tz!==BASE_TZ?tzOffset(tz,BASE_TZ):0;
+        var avail={};
+        SLOTS.forEach(function(slot,i){
+          var col=SLOT_COL_START+i;
+          var val=c[col]&&c[col].v?c[col].v:'';
+          if(!val)return;
+          var ni=i+off;
+          if(ni<0||ni>=SLOTS.length)return;
+          DAYS.forEach(function(d){
+            if(val.indexOf(d)!==-1){
+              if(!avail[d])avail[d]={};
+              avail[d][SLOT_HOURS[ni]]=true;
+            }
+          });
         });
+        tutorData.push({courses:courses,avail:avail});
       });
-      return merged;
-    }
+      sheetReady=true;
+    });
+  }
+  loadSheet().catch(function(){});
 
-    var selMat=document.getElementById('f-mat');
-    var selDia=document.getElementById('f-dia');
-    var selHora=document.getElementById('f-hora');
-
-    selMat.addEventListener('change',function(){
-      selDia.innerHTML='<option value="">Elige un día</option>';
-      selHora.innerHTML='<option value="">Primero elige un día</option>';
-      var materia=selMat.value;
-      if(!materia)return;
-      currentAvail=buildAvail(materia);
-      DAYS.forEach(function(d){
-        if(currentAvail[d]&&Object.keys(currentAvail[d]).length){
-          var opt=document.createElement('option');
-          opt.value=d;opt.textContent=d;
-          selDia.appendChild(opt);
-        }
+  function buildAvail(materia){
+    var merged={};
+    tutorData.forEach(function(td){
+      if(!tutorTeaches(td.courses,materia))return;
+      Object.keys(td.avail).forEach(function(day){
+        if(!merged[day])merged[day]={};
+        Object.keys(td.avail[day]).forEach(function(h){merged[day][h]=true});
       });
     });
+    return merged;
+  }
 
-    selDia.addEventListener('change',function(){
-      selHora.innerHTML='<option value="">Elige una hora</option>';
-      var day=selDia.value;
-      if(!day||!currentAvail[day])return;
-      SLOT_LABELS.forEach(function(label){
-        if(currentAvail[day][label]){
-          var opt=document.createElement('option');
-          opt.value=label;opt.textContent=label;
-          selHora.appendChild(opt);
-        }
-      });
-    });
-  }).catch(function(){
-    var selDia=document.getElementById('f-dia');
-    selDia.innerHTML='<option value="">Elige un día</option>';
-    DAYS.forEach(function(d){
-      var opt=document.createElement('option');
-      opt.value=d;opt.textContent=d;
-      selDia.appendChild(opt);
-    });
+  function formatHour(h24){
+    if(h24===0)return '12:00 am';
+    if(h24<12)return h24+':00 am';
+    if(h24===12)return '12:00 pm';
+    return (h24-12)+':00 pm';
+  }
+
+  /* ── Load config ── */
+  fetch('config/clase-prueba.json').then(function(r){return r.json()}).then(function(c){CFG=c}).catch(function(){
+    CFG={whatsapp:'51999999999',programas:{Secundaria:{anios:['1ro','2do','3ro','4to','5to'],materias:['Matemáticas','Física','Química','Biología','Historia','Lengua y Literatura','Inglés','Comunicaciones','Programación']},IB:{anios:['Diploma 1er año','Diploma 2do año'],niveles:['SL','HL','No sé'],materias:['Matemáticas','Física','Biología','Historia','Literatura','Inglés B','Business Management','ESS']}},prefijoPais:[{codigo:'+51',pais:'Perú',digitos:9},{codigo:'+52',pais:'México',digitos:10},{codigo:'+57',pais:'Colombia',digitos:10},{codigo:'+54',pais:'Argentina',digitos:10},{codigo:'+56',pais:'Chile',digitos:9},{codigo:'+1',pais:'EE.UU.',digitos:10},{codigo:'+34',pais:'España',digitos:9}]};
   });
 
-  var form=document.getElementById('lead');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var n=form.querySelector('#f-nombre'),w=form.querySelector('#f-wsp');
-    var note=document.getElementById('form-note');
-    if(!n.value.trim()||!w.value.trim()){
-      note.textContent='Completa tu nombre y tu WhatsApp para poder escribirte.';
-      (n.value.trim()?w:n).focus();
-      return;
+  /* ── State ── */
+  var state={done:false,programa:'',nivel:'',materia:'',tema:'',dayKey:'',dayLabel:'',hour:0,hourLabel:'',
+    nombre:'',prefijo:'+51',telefono:'',email:'',nota:''};
+  var openerBtn=null;
+
+  /* ── DOM refs ── */
+  var overlay=document.getElementById('mdl-overlay');
+  var mdl=document.getElementById('mdl');
+  var bodyEl=document.getElementById('mdl-body');
+  var footEl=document.getElementById('mdl-foot');
+  var scrollY=0;
+
+  /* ── Modal open/close ── */
+  function openModal(){
+    openerBtn=document.activeElement;
+    scrollY=window.scrollY;
+    document.body.style.top='-'+scrollY+'px';
+    document.body.classList.add('modal-open');
+    overlay.classList.add('open');
+    history.pushState({wizz:1},'','#clase-prueba');
+    renderForm();
+    mdl.querySelector('.mdl-close').focus();
+  }
+  function closeModal(skipConfirm){
+    var dirty=state.programa||state.nombre||state.telefono;
+    if(!skipConfirm&&dirty&&!state.done){
+      if(!confirm('¿Salir? Perderás lo que elegiste.')){return}
     }
-    var btn=form.querySelector('button[type="submit"]');
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    document.body.style.top='';
+    window.scrollTo(0,scrollY);
+    if(location.hash==='#clase-prueba')history.replaceState(null,'',location.pathname+location.search);
+    if(openerBtn&&openerBtn.focus)openerBtn.focus();
+    resetState();
+  }
+  function resetState(){
+    state={done:false,programa:'',nivel:'',materia:'',tema:'',dayKey:'',dayLabel:'',hour:0,hourLabel:'',
+      nombre:'',prefijo:'+51',telefono:'',email:'',nota:''};
+  }
+
+  document.querySelectorAll('.open-modal-btn').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();openModal()});
+  });
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal()});
+  mdl.querySelector('.mdl-close').addEventListener('click',function(){closeModal()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal()});
+
+  mdl.addEventListener('keydown',function(e){
+    if(e.key!=='Tab')return;
+    var focusable=mdl.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])');
+    if(!focusable.length)return;
+    var first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus()}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus()}}
+  });
+
+  window.addEventListener('popstate',function(){
+    if(overlay.classList.contains('open'))closeModal(true);
+  });
+
+  if(location.hash==='#clase-prueba'){
+    var waitCfg=setInterval(function(){if(CFG){clearInterval(waitCfg);openModal()}},50);
+    setTimeout(function(){clearInterval(waitCfg)},3000);
+  }
+
+  /* ── Build available days/hours for dropdown ── */
+  function getSlots(materia){
+    var avail=buildAvail(materia);
+    var dayMap=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    var now=new Date();
+    var today=new Date(now);today.setHours(0,0,0,0);
+    var startOffset=now.getHours()>=19?2:1;
+    var result=[];
+    for(var d=startOffset;d<startOffset+14;d++){
+      var dt=new Date(today);dt.setDate(today.getDate()+d);
+      var dayName=dayMap[dt.getDay()];
+      if(!avail[dayName]||!Object.keys(avail[dayName]).length)continue;
+      var shortDay=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'][dt.getDay()];
+      var hours=Object.keys(avail[dayName]).map(Number).sort(function(a,b){return a-b});
+      result.push({date:new Date(dt),dayName:dayName,label:shortDay+' '+dt.getDate(),key:dt.toISOString().slice(0,10),hours:hours});
+    }
+    return result;
+  }
+
+  /* ── Render single-view form ── */
+  function renderForm(){
+    bodyEl.innerHTML='';footEl.innerHTML='';
+    if(state.done){renderDone();return}
+    var cfg=CFG?CFG.programas:{};
+
+    /* row 1: nombre + teléfono */
+    var row1=mk('div','mdl-row');
+    var nf=mk('div','mdl-field');
+    nf.appendChild(mkLabel('Tu nombre','mdl-nombre'));
+    var ni=mk('input');ni.type='text';ni.id='mdl-nombre';ni.autocomplete='name';ni.placeholder='Nombre y apellido';ni.value=state.nombre;
+    ni.addEventListener('input',function(){state.nombre=this.value});
+    nf.appendChild(ni);
+    row1.appendChild(nf);
+    var wf=mk('div','mdl-field');
+    wf.appendChild(mkLabel('Teléfono','mdl-tel'));
+    var pr=mk('div','phone-row');
+    var psel=document.createElement('select');psel.id='mdl-prefix';
+    (CFG?CFG.prefijoPais:[{codigo:'+51',pais:'Perú'}]).forEach(function(p){
+      var o=document.createElement('option');o.value=p.codigo;o.textContent=p.codigo+' '+p.pais;
+      if(p.codigo===state.prefijo)o.selected=true;
+      psel.appendChild(o);
+    });
+    psel.addEventListener('change',function(){state.prefijo=this.value});
+    pr.appendChild(psel);
+    var ti=mk('input');ti.type='tel';ti.id='mdl-tel';ti.inputMode='numeric';ti.autocomplete='tel-national';ti.placeholder='9XX XXX XXX';ti.value=state.telefono;
+    ti.addEventListener('input',function(){state.telefono=this.value.replace(/[^\d\s]/g,'')});
+    pr.appendChild(ti);
+    wf.appendChild(pr);
+    row1.appendChild(wf);
+    bodyEl.appendChild(row1);
+
+    /* email */
+    var ef=mk('div','mdl-field');
+    ef.appendChild(mkLabel('Email','mdl-email'));
+    var ei=mk('input');ei.type='email';ei.id='mdl-email';ei.autocomplete='email';ei.placeholder='tu@email.com';ei.value=state.email;
+    ei.addEventListener('input',function(){state.email=this.value});
+    ef.appendChild(ei);
+    bodyEl.appendChild(ef);
+
+    /* row 2: programa + materia */
+    var row2=mk('div','mdl-row');
+    var pf=mk('div','mdl-field');
+    pf.appendChild(mkLabel('Programa','mdl-prog'));
+    var ps=document.createElement('select');ps.id='mdl-prog';
+    addOpt(ps,'','Elige un programa');
+    Object.keys(cfg).forEach(function(p){addOpt(ps,p,p)});
+    ps.value=state.programa;
+    ps.addEventListener('change',function(){
+      state.programa=this.value;state.materia='';state.nivel='';state.dayKey='';state.dayLabel='';state.hour=0;state.hourLabel='';
+      renderForm();
+    });
+    pf.appendChild(ps);
+    row2.appendChild(pf);
+
+    var mf=mk('div','mdl-field');
+    mf.appendChild(mkLabel('Materia','mdl-mat'));
+    var ms=document.createElement('select');ms.id='mdl-mat';
+    if(!state.programa){
+      addOpt(ms,'','Primero elige un programa');ms.disabled=true;
+    } else {
+      addOpt(ms,'','Elige una materia');
+      cfg[state.programa].materias.forEach(function(m){addOpt(ms,m,m)});
+      ms.value=state.materia;
+    }
+    ms.addEventListener('change',function(){
+      state.materia=this.value;state.dayKey='';state.dayLabel='';state.hour=0;state.hourLabel='';
+      renderForm();
+    });
+    mf.appendChild(ms);
+    row2.appendChild(mf);
+    bodyEl.appendChild(row2);
+
+    /* nivel IB (optional) */
+    if(state.programa==='IB'&&cfg.IB&&cfg.IB.niveles){
+      var nvf=mk('div','mdl-field');
+      nvf.appendChild(mkLabel('Nivel (opcional)','mdl-nivel'));
+      var nvs=document.createElement('select');nvs.id='mdl-nivel';
+      addOpt(nvs,'','No sé / No importa');
+      cfg.IB.niveles.forEach(function(n){addOpt(nvs,n,n)});
+      nvs.value=state.nivel;
+      nvs.addEventListener('change',function(){state.nivel=this.value});
+      nvf.appendChild(nvs);
+      bodyEl.appendChild(nvf);
+    }
+
+    /* tema (optional) */
+    var temaF=mk('div','mdl-field');
+    temaF.appendChild(mkLabel('Tema para la clase (opcional)','mdl-tema'));
+    var temaI=mk('input');temaI.type='text';temaI.id='mdl-tema';temaI.placeholder='Ej.: ecuaciones de segundo grado';temaI.value=state.tema;
+    temaI.addEventListener('input',function(){state.tema=this.value});
+    temaF.appendChild(temaI);
+    bodyEl.appendChild(temaF);
+
+    /* row 3: día + hora */
+    var slots=state.materia?getSlots(state.materia):[];
+    var row3=mk('div','mdl-row');
+    var df=mk('div','mdl-field');
+    df.appendChild(mkLabel('Día preferido','mdl-day'));
+    var ds=document.createElement('select');ds.id='mdl-day';
+    if(!state.materia){
+      addOpt(ds,'','Primero elige una materia');ds.disabled=true;
+    } else if(!slots.length){
+      addOpt(ds,'','Sin horarios disponibles');ds.disabled=true;
+    } else {
+      addOpt(ds,'','Elige un día');
+      slots.forEach(function(s){addOpt(ds,s.key,s.label)});
+      ds.value=state.dayKey;
+    }
+    ds.addEventListener('change',function(){
+      var s=slots.filter(function(x){return x.key===ds.value})[0];
+      state.dayKey=ds.value;state.dayLabel=s?s.label:'';state.hour=0;state.hourLabel='';
+      renderForm();
+    });
+    df.appendChild(ds);
+    row3.appendChild(df);
+
+    var hf=mk('div','mdl-field');
+    hf.appendChild(mkLabel('Hora preferida','mdl-hour'));
+    var hs=document.createElement('select');hs.id='mdl-hour';
+    var selDay=slots.filter(function(x){return x.key===state.dayKey})[0];
+    if(!state.dayKey){
+      addOpt(hs,'','Primero elige un día');hs.disabled=true;
+    } else if(!selDay){
+      addOpt(hs,'','Sin horarios');hs.disabled=true;
+    } else {
+      addOpt(hs,'','Elige una hora');
+      selDay.hours.forEach(function(hr){addOpt(hs,String(hr),formatHour(hr))});
+      if(state.hour)hs.value=String(state.hour);
+    }
+    hs.addEventListener('change',function(){
+      state.hour=parseInt(hs.value)||0;
+      state.hourLabel=state.hour?formatHour(state.hour):'';
+    });
+    hf.appendChild(hs);
+    row3.appendChild(hf);
+    bodyEl.appendChild(row3);
+
+    /* nota */
+    var notaF=mk('div','mdl-field');
+    notaF.appendChild(mkLabel('Cuéntanos de tu hijo (opcional)','mdl-nota'));
+    var notaT=document.createElement('textarea');notaT.id='mdl-nota';notaT.placeholder='Qué le cuesta, cómo aprende mejor, qué buscas en un tutor';notaT.value=state.nota;
+    notaT.addEventListener('input',function(){state.nota=this.value});
+    notaF.appendChild(notaT);
+    bodyEl.appendChild(notaF);
+
+    /* error */
+    var err=document.createElement('p');err.className='mdl-error';err.id='mdl-error';
+    bodyEl.appendChild(err);
+
+    /* footer */
+    var sendBtn=document.createElement('button');sendBtn.className='btn';sendBtn.type='button';
+    sendBtn.textContent='Quiero agendar la clase de prueba';
+    sendBtn.addEventListener('click',function(){submitForm(sendBtn)});
+    footEl.appendChild(sendBtn);
+  }
+
+  /* helpers */
+  function mk(tag,cls){var el=document.createElement(tag);if(cls)el.className=cls;return el}
+  function mkLabel(txt,forId){var l=document.createElement('label');l.textContent=txt;if(forId)l.htmlFor=forId;return l}
+  function addOpt(sel,val,txt){var o=document.createElement('option');o.value=val;o.textContent=txt;sel.appendChild(o)}
+
+  /* ── Submit ── */
+  function submitForm(btn){
+    var errEl=document.getElementById('mdl-error');
+    if(!state.nombre.trim()){errEl.textContent='Escribe tu nombre para que podamos contactarte.';return}
+    var digits=(state.telefono||'').replace(/\s/g,'');
+    if(!digits||digits.length<7){errEl.textContent='Escribe un número de teléfono válido.';return}
+    if(!state.programa){errEl.textContent='Elige un programa.';return}
+    if(!state.materia){errEl.textContent='Elige una materia.';return}
+    errEl.textContent='';
     btn.disabled=true;btn.textContent='Enviando…';
-    var payload=Object.fromEntries(new FormData(form));
-    fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)})
+
+    var payload={
+      access_key:'b8aceb0c-a574-4a9a-9e51-eb648b5cd941',
+      subject:'Nueva clase de prueba – Wizz Tutorías',
+      from_name:'Wizz Tutorías Web',
+      nombre:state.nombre.trim(),
+      telefono:state.prefijo+' '+state.telefono.trim(),
+      email:state.email||'',
+      programa:state.programa,
+      materia:state.materia,
+      nivel_ib:state.nivel||'',
+      tema:state.tema||'',
+      dia_preferido:state.dayLabel||'',
+      hora_preferida:state.hourLabel||'',
+      nota:state.nota||'',
+      botcheck:''
+    };
+
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
     .then(function(r){return r.json()})
     .then(function(json){
-      if(json.success){
-        var nombre=n.value.trim().split(' ')[0].replace(/[<>&]/g,'');
-        var dia=form.querySelector('#f-dia').value;
-        var hora=form.querySelector('#f-hora').value;
-        var msg='Gracias, '+nombre+'.';
-        if(dia&&hora)msg+=' Registramos tu preferencia: '+dia+' a las '+hora+'.';
-        msg+=' Te contactaremos pronto por WhatsApp para confirmar tu clase de prueba.';
-        form.innerHTML='<p class="ok">'+msg+'</p>';
-      } else {
-        note.textContent='Hubo un error. Intenta de nuevo o escríbenos directo por WhatsApp.';
-        btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
-      }
+      if(json.success){state.done=true;renderForm()}
+      else{errEl.textContent='Hubo un error. Intenta de nuevo.';btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba'}
     })
-    .catch(function(){
-      note.textContent='Error de conexión. Intenta de nuevo.';
-      btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba';
-    });
-  });
+    .catch(function(){errEl.textContent='Error de conexión. Intenta de nuevo.';btn.disabled=false;btn.textContent='Quiero agendar la clase de prueba'});
+  }
+
+  /* ── Done screen ── */
+  function renderDone(){
+    bodyEl.innerHTML='';footEl.innerHTML='';
+    var dv=mk('div','done-screen');
+    var msg='¡Listo! Recibimos tu solicitud.';
+    dv.innerHTML='<h2>'+msg+'</h2><p>Te contactaremos pronto para confirmar los detalles.</p>';
+    var closeBtn=document.createElement('button');closeBtn.className='btn';closeBtn.type='button';
+    closeBtn.style.cssText='margin-top:var(--s3);background:var(--bg-alt);color:var(--fg)';
+    closeBtn.textContent='Cerrar';
+    closeBtn.addEventListener('click',function(){closeModal(true)});
+    dv.appendChild(closeBtn);
+    bodyEl.appendChild(dv);
+  }
+
 })();
 </script>
 
