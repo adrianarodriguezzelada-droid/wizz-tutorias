@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Únete al equipo de tutores de Wizz. Gana dinero en tus tiempos libres, obtén experiencia laboral real y sé parte de un ecosistema educativo mundial con sede en Perú y Madrid.">
+<link rel="icon" href="assets/img/logo-wizz.png">
+<title>Wizz Tutorías · Sé tutor</title>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "yximxp4e47");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-349QRD3K9Q"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','G-349QRD3K9Q');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F6F1EB;
+  --bg-alt:#ECE5DB;
+  --fg:#141413;
+  --fg-soft:#5C564E;
+  --accent:#1E3A5F;
+  --accent-soft:#DDE3EA;
+  --on-accent:#F6F1EB;
+  --panel:#1E3A5F;
+  --panel-fg:#F6F1EB;
+  --panel-soft:rgba(246,241,235,.66);
+  --panel-line:rgba(246,241,235,.22);
+  --line:rgba(20,20,19,.12);
+  --logo-filter:none;
+  --font:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --t-label:.8125rem;
+  --t-small:1rem;
+  --t-body:1.125rem;
+  --t-lead:1.5rem;
+  --t-h3:2rem;
+  --t-h2:clamp(2.25rem,4.6vw,3.5rem);
+  --t-h1:clamp(2.75rem,7.4vw,6.5rem);
+  --t-say:clamp(2rem,5.4vw,4.5rem);
+  --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;--s6:48px;--s8:64px;--s10:80px;--s12:96px;--s16:128px;--s20:160px;--s24:192px;
+  --gutter:clamp(16px,3.2vw,40px);
+  --max:1360px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 88px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--font);font-size:var(--t-body);line-height:1.6;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+  padding-inline:var(--gutter);
+}
+h1,h2,h3,p,ul,ol,figure,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+h1,h2,h3{font-weight:400;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+
+.wrap{max-width:var(--max);margin-inline:auto}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--s3)}
+.label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;text-transform:uppercase;color:var(--fg-soft)}
+.label b{color:var(--accent);font-weight:500}
+.soft{color:var(--fg-soft)}
+.spark{display:inline-block;width:28px;height:16px;color:var(--accent)}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;gap:var(--s1);min-height:56px;padding:0 var(--s4);border-radius:99px;
+  background:var(--accent);color:var(--on-accent);font:500 var(--t-small)/1 var(--font);text-decoration:none;border:0;cursor:pointer;
+  transition:transform .25s ease,background .25s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-outline:hover{background:var(--accent);color:var(--on-accent)}
+.link{font-size:var(--t-small);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
+.link:hover{border-color:var(--fg)}
+
+/* ── nav ── */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(var(--gutter) * -1);padding:var(--s2) var(--gutter);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.logo{height:48px;width:auto;filter:var(--logo-filter)}
+.nav-links{display:flex;align-items:center;gap:var(--s4)}
+.nav-links a:not(.btn){font-size:var(--t-small);text-decoration:none;color:var(--fg-soft);transition:color .2s}
+.nav-links a:not(.btn):hover{color:var(--fg)}
+.nav .btn{min-height:48px;padding:0 var(--s3)}
+@media (max-width:900px){.nav-links a:not(.btn){display:none}}
+
+/* ── hero ── */
+.hero{padding-block:var(--s12) var(--s8)}
+.hero h1{grid-column:1 / span 10;font-size:var(--t-h1);font-weight:400}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .eyebrow{grid-column:1 / -1;margin-bottom:var(--s5)}
+.hero-side{grid-column:8 / span 5;margin-top:var(--s8);display:grid;gap:var(--s4)}
+.hero-side p{font-size:var(--t-lead);line-height:1.4;color:var(--fg-soft);letter-spacing:-.01em}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3)}
+.facts{grid-column:1 / span 6;margin-top:var(--s8);align-self:end;display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5)}
+.facts li{display:grid;gap:4px}
+.facts strong{font-weight:500;font-size:var(--t-lead);letter-spacing:-.02em}
+.facts span{font-size:var(--t-small);color:var(--fg-soft)}
+@media (max-width:900px){
+  .hero h1,.hero-side,.facts{grid-column:1 / -1}
+  .hero-side{margin-top:var(--s5)}
+  .facts{order:3;margin-top:var(--s6)}
+}
+
+/* ── sections ── */
+section{padding-block:var(--s20)}
+@media (max-width:700px){section{padding-block:var(--s12)}}
+.sec-head{display:grid;gap:var(--s3);margin-bottom:var(--s10)}
+.sec-head h2{font-size:var(--t-h2)}
+
+/* ── spaced statements ── */
+.say{row-gap:var(--s16)}
+.say p{min-width:0;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;max-width:none;text-wrap:balance}
+.say .s1{grid-column:1 / span 7}
+.say .s2{grid-column:4 / span 7}
+.say .s3{grid-column:6 / span 7}
+.say .s4{grid-column:1 / span 10;color:var(--fg)}
+.say .s4 span{color:var(--accent)}
+.say .dim{color:var(--fg-soft)}
+@media (max-width:900px){.say{row-gap:var(--s10);grid-template-columns:minmax(0,1fr)}.say p{grid-column:1 / -1!important;max-width:100%!important}}
+
+/* ── pillars ── */
+.pillars{row-gap:var(--s10)}
+.pillar{display:grid;align-content:start;gap:var(--s2);padding-top:var(--s3);border-top:1px solid var(--line)}
+.pillar h3{font-size:var(--t-h3)}
+.pillar p{color:var(--fg-soft);max-width:38ch}
+.pillar:nth-child(1){grid-column:1 / span 4}
+.pillar:nth-child(2){grid-column:5 / span 4;margin-top:var(--s10)}
+.pillar:nth-child(3){grid-column:9 / span 4;margin-top:var(--s20)}
+@media (max-width:900px){.pillar{grid-column:1 / -1!important;margin-top:0!important}}
+
+/* ── brand (blue bg) ── */
+.brand{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.brand .spark{color:var(--panel-fg);width:48px;height:28px}
+.brand p{grid-column:2 / span 10;font-size:var(--t-say);line-height:1.08;letter-spacing:-.035em;text-wrap:balance;margin-top:var(--s5)}
+.brand p span{color:var(--panel-soft)}
+.brand .spark-wrap{grid-column:2 / span 10}
+@media (max-width:900px){.brand p,.brand .spark-wrap{grid-column:1 / -1}}
+
+/* ── steps ── */
+.steps ol{grid-column:1 / -1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3)}
+.steps li{display:grid;gap:var(--s2);padding-top:var(--s3);border-top:1px solid var(--line)}
+.steps .n{font-family:var(--mono);font-size:var(--t-small);color:var(--accent)}
+.steps h3{font-size:var(--t-h3);margin-bottom:var(--s1)}
+.steps p{color:var(--fg-soft);max-width:38ch}
+@media (max-width:900px){.steps ol{grid-template-columns:1fr}}
+
+/* ── benefits grid ── */
+.benefits{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3)}
+.benefit{padding:var(--s4);background:var(--bg-alt);border-radius:8px;display:grid;gap:var(--s2);align-content:start}
+.benefit h3{font-size:var(--t-lead);letter-spacing:-.02em;line-height:1.2}
+.benefit p{color:var(--fg-soft)}
+.benefit .icon{font-size:2rem;line-height:1}
+@media (max-width:700px){.benefits{grid-template-columns:1fr}}
+
+/* ── global presence ── */
+.presence{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:var(--s3)}
+.presence-card{padding:var(--s6);border-radius:8px;border:1px solid var(--line);display:grid;gap:var(--s2);align-content:start}
+.presence-card .city{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.presence-card h3{font-size:var(--t-h2);letter-spacing:-.035em;line-height:1.02}
+.presence-card p{color:var(--fg-soft);max-width:44ch}
+@media (max-width:700px){.presence{grid-template-columns:1fr}}
+
+/* ── profile (who we look for) ── */
+.profile-list{grid-column:6 / span 7;display:grid;gap:var(--s3)}
+.profile-item{display:grid;grid-template-columns:8px 1fr;gap:var(--s3);padding-top:var(--s3);border-top:1px solid var(--line)}
+.profile-item .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:10px}
+.profile-item h3{font-size:var(--t-lead);letter-spacing:-.02em;line-height:1.2;margin-bottom:4px}
+.profile-item p{color:var(--fg-soft);max-width:50ch}
+@media (max-width:900px){.profile-list{grid-column:1 / -1}}
+
+/* ── methodology ── */
+.method{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:var(--s8);align-items:center}
+.method-text{display:grid;gap:var(--s4)}
+.method-text h2{font-size:var(--t-h2)}
+.method-text p{color:var(--fg-soft);max-width:46ch}
+.method-visual{display:grid;gap:var(--s3)}
+.method-point{padding:var(--s3);border-left:3px solid var(--accent);display:grid;gap:4px}
+.method-point h3{font-size:var(--t-lead);letter-spacing:-.02em}
+.method-point p{color:var(--fg-soft)}
+@media (max-width:900px){.method{grid-template-columns:1fr}}
+
+/* ── FAQ ── */
+.faq .sec-head{grid-column:1 / span 4;align-self:start}
+.faq .list{grid-column:6 / span 7}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--s3);padding-block:var(--s3);font-size:var(--t-body);font-weight:500;letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--accent);font-size:var(--t-lead);line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding-bottom:var(--s3);color:var(--fg-soft);max-width:60ch}
+@media (max-width:900px){.faq .sec-head,.faq .list{grid-column:1 / -1}}
+
+/* ── CTA bottom ── */
+.cta{background:var(--panel);color:var(--panel-fg);margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.cta .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s3)}
+.cta h2{font-size:var(--t-h2)}
+.cta p{color:var(--panel-soft);max-width:36ch}
+.cta .label{color:var(--panel-soft)}
+.cta .btn{background:var(--panel-fg);color:var(--panel)}
+
+/* ── modal ── */
+body.modal-open{overflow:hidden;position:fixed;width:100%;touch-action:none}
+.mdl-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(20,20,19,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.mdl-overlay.open{display:flex;align-items:center;justify-content:center}
+.mdl{position:relative;width:100%;max-width:560px;max-height:min(92vh,92dvh);background:var(--bg);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.18)}
+@media (max-width:767px){.mdl{max-width:100%;max-height:100dvh;height:100dvh;border-radius:0}}
+.mdl-head{display:flex;align-items:center;justify-content:space-between;padding:var(--s2) var(--s3);border-bottom:1px solid var(--line);flex-shrink:0}
+.mdl-head h2{font-size:var(--t-lead);letter-spacing:-.02em;font-weight:500}
+.mdl-close{background:none;border:0;cursor:pointer;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;color:var(--fg-soft);font-size:1.5rem;line-height:1;transition:background .15s}
+.mdl-close:hover{background:var(--bg-alt)}
+.mdl-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:var(--s3)}
+.mdl-body::-webkit-scrollbar{width:4px}
+.mdl-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px}
+.mdl-foot{padding:0 var(--s3) var(--s3);flex-shrink:0}
+.mdl-foot .btn{width:100%;justify-content:center;min-height:56px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2);margin-bottom:var(--s3)}
+@media (max-width:500px){.f-row{grid-template-columns:1fr}}
+.f-field{margin-bottom:var(--s3)}
+.f-row .f-field{margin-bottom:0}
+.f-field label{font-family:var(--mono);font-size:var(--t-label);letter-spacing:.06em;text-transform:uppercase;color:var(--fg-soft);display:block;margin-bottom:var(--s1)}
+.f-field input,.f-field textarea,.f-field select{width:100%;font:400 var(--t-body)/1.4 var(--font);color:var(--fg);background:var(--bg-alt);
+  border:2px solid transparent;padding:var(--s1) var(--s2);border-radius:8px;transition:border-color .15s}
+.f-field select{cursor:pointer;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235C564E' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:var(--s4)}
+.f-field input:focus,.f-field textarea:focus,.f-field select:focus{outline:none;border-color:var(--accent)}
+.f-field input::placeholder,.f-field textarea::placeholder{color:var(--fg-soft);opacity:.6}
+.f-field textarea{resize:vertical;min-height:88px}
+.f-error{color:#c0392b;font-size:var(--t-small);text-align:center;padding:var(--s1) 0}
+.f-success{text-align:center;padding:var(--s6) var(--s3)}
+.f-success h3{font-size:var(--t-h3);margin-bottom:var(--s2)}
+.f-success p{color:var(--fg-soft);margin-bottom:var(--s4)}
+.mdl-fine{font-size:var(--t-label);color:var(--fg-soft);text-align:center;margin-top:var(--s2)}
+
+/* footer */
+footer{padding-block:var(--s10) var(--s6)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:var(--s4)}
+footer nav{display:flex;flex-wrap:wrap;gap:var(--s3)}
+footer a{font-size:var(--t-small);text-decoration:none;color:var(--fg-soft)}
+footer a:hover{color:var(--fg)}
+footer small{font-size:var(--t-small);color:var(--fg-soft);width:100%;padding-top:var(--s4);border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s2)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="spark" viewBox="0 0 56 32">
+    <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+      <path d="M28 4v16"/><path d="M16 9l7 11"/><path d="M40 9l-7 11"/><path d="M7 17l12 5"/><path d="M49 17l-12 5"/><path d="M6 28h44"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a href="index.html" aria-label="Wizz Tutorías, inicio"><img class="logo" src="assets/img/logo-wizz.png" alt="Wizz Tutorías"></a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#por-que">Por qué Wizz</a>
+      <a href="#metodologia">Metodología</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#preguntas">Preguntas</a>
+      <button class="btn open-modal-btn" type="button">Quiero ser tutor</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap grid">
+    <p class="label eyebrow"><b>Para tutores</b> &nbsp;·&nbsp; Sé parte del equipo · Ecosistema educativo mundial</p>
+    <h1>Tu primera experiencia profesional <em>empieza aquí.</em></h1>
+    <ul class="facts" aria-label="Datos clave">
+      <li><strong>100% online</strong><span>desde donde estés</span></li>
+      <li><strong>Horarios flexibles</strong><span>tú decides cuándo</span></li>
+      <li><strong>Ecosistema global</strong><span>educación sin fronteras</span></li>
+    </ul>
+    <div class="hero-side">
+      <p>Estudias en la universidad, hiciste IB o dominas materias de secundaria. Nosotros te damos los alumnos, las herramientas y la capacitación. Tú pones las ganas.</p>
+      <div class="hero-actions">
+        <button class="btn open-modal-btn" type="button">Quiero ser tutor</button>
+        <a class="link" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACED STATEMENTS -->
+<section aria-label="Lo que te pasa">
+  <div class="wrap grid say">
+    <p class="s1 dim">Quieres ganar tu propio dinero.</p>
+    <p class="s2 dim">Pero no sabes por dónde empezar.</p>
+    <p class="s3 dim">O sientes que no tienes la experiencia suficiente.</p>
+    <p class="s4">Acá no necesitas experiencia. <span>Nosotros te enseñamos a enseñar.</span></p>
+  </div>
+</section>
+
+<!-- BRAND STATEMENT: ECOSYSTEM -->
+<section class="brand" aria-label="Ecosistema mundial">
+  <div class="wrap grid" style="padding-block:var(--s12)">
+    <div class="spark-wrap"><svg class="spark" viewBox="0 0 56 32" aria-hidden="true"><use href="#spark"/></svg></div>
+    <p>Wizz no es una academia local. <span>Es un ecosistema educativo mundial con sedes en Latinoamérica y Europa.</span></p>
+  </div>
+</section>
+
+<!-- GLOBAL PRESENCE -->
+<section id="ecosistema" style="padding-top:var(--s10)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Presencia global</b></p>
+      <h2>Construimos algo más grande que clases particulares.</h2>
+      <p class="soft" style="max-width:56ch">Detrás de Wizz hay un equipo de ingenieros, psicólogos educativos y especialistas en pedagogía construyendo un ecosistema que cambia la forma en que se enseña y se aprende.</p>
+    </div>
+    <div class="grid">
+      <div class="presence">
+        <div class="presence-card">
+          <span class="city">Latinoamérica · Perú</span>
+          <h3>Lima</h3>
+          <p>Nuestra sede principal. Más de 7 años formando tutores y conectando familias de toda Latinoamérica con educación de calidad.</p>
+        </div>
+        <div class="presence-card">
+          <span class="city">Europa · España</span>
+          <h3>Madrid</h3>
+          <p>Nuestra sede europea. Wizz conecta tutores y alumnos en ambos continentes. Misma metodología, alcance internacional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WIZZ -->
+<section id="por-que">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>¿Por qué ser tutor en Wizz?</b></p>
+      <h2>No es solo dar clases. Es tu primer trabajo de verdad.</h2>
+    </div>
+    <div class="grid">
+      <div class="benefits">
+        <div class="benefit">
+          <h3>Nosotros te damos los alumnos</h3>
+          <p>No tienes que buscar clientes ni hacerte publicidad. Nos encargamos de asignarte alumnos que encajen con tu perfil y tus horarios.</p>
+        </div>
+        <div class="benefit">
+          <h3>Horarios 100% flexibles</h3>
+          <p>Tú decides cuándo das clases. Acomoda tus tutorías alrededor de tus horarios de universidad, no al revés.</p>
+        </div>
+        <div class="benefit">
+          <h3>Gana dinero en tus tiempos libres</h3>
+          <p>Convierte tus conocimientos en ingresos reales. Sin compromisos rígidos: das clases cuando puedes.</p>
+        </div>
+        <div class="benefit">
+          <h3>Experiencia laboral real</h3>
+          <p>Algo que poner en tu CV que no sea "prácticas no remuneradas". Experiencia concreta enseñando, comunicando y liderando.</p>
+        </div>
+        <div class="benefit">
+          <h3>Desarrolla liderazgo</h3>
+          <p>Guiar a un alumno te enseña a escuchar, a adaptar tu comunicación y a liderar desde el ejemplo. Habilidades que se notan en cualquier entrevista.</p>
+        </div>
+        <div class="benefit">
+          <h3>Parte de algo mundial</h3>
+          <p>No es un trabajo aislado. Eres parte de un ecosistema educativo mundial con sedes en Perú y España, y una comunidad de tutores que comparte experiencias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="metodologia">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Metodología Wizz</b></p>
+      <h2>No eres un profesor cualquiera. Eres un coach.</h2>
+    </div>
+    <div class="grid">
+      <div class="method">
+        <div class="method-text">
+          <p>En Wizz no buscamos profesores que den la clase y se vayan. Buscamos personas que conecten con el alumno, que lo entiendan y que lo guíen.</p>
+          <p>Ser tutor en Wizz es ser un mentor: alguien que escucha antes de explicar, que adapta su forma de enseñar a cada alumno y que celebra cada avance.</p>
+          <p>Y no llegas solo. <strong>Te capacitamos antes de tu primera clase</strong> con nuestra metodología, te damos herramientas web y material de apoyo, y te acompañamos todo el camino. Detrás hay un equipo de ingenieros, psicólogos educativos y pedagogos que diseñó cada paso del proceso.</p>
+        </div>
+        <div class="method-visual">
+          <div class="method-point">
+            <h3>Conecta primero</h3>
+            <p>Conoce a tu alumno. Cómo piensa, qué le cuesta, qué lo motiva. La confianza viene antes que la materia.</p>
+          </div>
+          <div class="method-point">
+            <h3>Guía, no dictes</h3>
+            <p>Haz preguntas. Deja que llegue a la respuesta. Un buen coach no da las respuestas: ayuda a encontrarlas.</p>
+          </div>
+          <div class="method-point">
+            <h3>Inspira desde quién eres</h3>
+            <p>Tus intereses, tus experiencias, tu forma de ver el mundo. Eso es lo que hace la diferencia con un alumno de 15 años.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE GIVE YOU -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Te enseñamos a enseñar</b></p>
+      <h2>Llegas con ganas. Sales con herramientas.</h2>
+    </div>
+    <div class="grid pillars">
+      <article class="pillar">
+        <h3>Capacitación completa</h3>
+        <p>Antes de tu primera clase te formamos en la metodología Wizz: cómo conectar con el alumno, cómo adaptar tu clase y cómo hacer seguimiento.</p>
+      </article>
+      <article class="pillar">
+        <h3>Herramientas web</h3>
+        <p>Plataformas, recursos digitales y material de apoyo. Todo lo que necesitas para dar una clase profesional desde tu laptop.</p>
+      </article>
+      <article class="pillar">
+        <h3>Acompañamiento continuo</h3>
+        <p>No te dejamos solo después de la primera clase. Tienes un equipo detrás que te apoya, te da feedback y te ayuda a mejorar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label"><b>Cómo funciona</b></p>
+      <h2>Cuatro pasos. Sin complicaciones.</h2>
+    </div>
+    <div class="grid steps">
+      <ol>
+        <li><span class="n">01</span><div><h3>Llena el formulario</h3><p>Cuéntanos de ti: qué estudias, qué materias dominas y cuándo puedes dar clases.</p></div></li>
+        <li><span class="n">02</span><div><h3>Te contactamos</h3><p>Nos comunicamos contigo para conocerte mejor y entender tu perfil.</p></div></li>
+        <li><span class="n">03</span><div><h3>Te capacitamos</h3><p>Te formamos en la metodología Wizz y te damos las herramientas para tu primera clase.</p></div></li>
+        <li><span class="n">04</span><div><h3>Empiezas a enseñar</h3><p>Te asignamos alumnos que encajen contigo y empiezas a dar clases en tus horarios.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE'RE LOOKING FOR -->
+<section id="perfil">
+  <div class="wrap grid">
+    <div class="sec-head" style="grid-column:1 / span 4;align-self:start">
+      <p class="label"><b>¿A quién buscamos?</b></p>
+      <h2>No buscamos al alumno perfecto.</h2>
+    </div>
+    <div class="profile-list">
+      <div class="profile-item">
+        <div class="dot"></div>
+        <div>
+          <h3>Estudiante universitario</h3>
+          <p>Que esté cursando o haya cursado una carrera. No importa en qué año estés.</p>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="dot"></div>
+        <div>
+          <h3>Hiciste IB o dominas materias de secundaria</h3>
+          <p>Sabes bien al menos una materia y puedes explicarla con paciencia. Si hiciste el Bachillerato Internacional, mejor aún.</p>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="dot"></div>
+        <div>
+          <h3>Responsable y con ganas de enseñar</h3>
+          <p>Que cuando digas que vas a estar, estés. Y que te importe de verdad que tu alumno aprenda.</p>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="dot"></div>
+        <div>
+          <h3>Buena conexión a internet</h3>
+          <p>Las clases son 100% online. Necesitas una conexión estable y un lugar tranquilo para enseñar.</p>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="dot"></div>
+        <div>
+          <h3>Que no seas solo notas</h3>
+          <p>Que tengas vida fuera del aula. Alguien que surfea, toca guitarra, lidera un club, hace voluntariado o simplemente tiene curiosidad por mil cosas. En Wizz creemos que los mejores tutores son personas con intereses propios, que inspiran desde quiénes son, no solo desde lo que saben. Buscamos personas interesantes, no solo estudiantes perfectos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STATEMENT 2 -->
+<section class="brand" aria-label="Frase de cierre">
+  <div class="wrap grid" style="padding-block:var(--s12)">
+    <div class="spark-wrap"><svg class="spark" viewBox="0 0 56 32" aria-hidden="true"><use href="#spark"/></svg></div>
+    <p>No es un trabajo más. <span>Es ser parte de un ecosistema educativo mundial que conecta Latinoamérica y Europa.</span></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="preguntas" style="padding-top:0">
+  <div class="wrap grid faq">
+    <div class="sec-head">
+      <p class="label"><b>Preguntas frecuentes</b></p>
+      <h2>Lo que nos preguntan los tutores.</h2>
+    </div>
+    <div class="list">
+      <details open><summary>¿Necesito experiencia enseñando?</summary><p>No. Te capacitamos en la metodología Wizz antes de tu primera clase. Lo que sí necesitas es dominar la materia y tener ganas de enseñar.</p></details>
+      <details><summary>¿Cuánto gano?</summary><p>Depende de cuántas horas des. Es un ingreso flexible que se adapta a tu disponibilidad. Te lo explicamos todo cuando te contactemos.</p></details>
+      <details><summary>¿Puedo elegir mis horarios?</summary><p>Sí. Tú defines qué días y horas estás disponible. Nosotros buscamos alumnos que encajen con tus horarios.</p></details>
+      <details><summary>¿Tengo que buscar mis propios alumnos?</summary><p>No. Wizz se encarga de conseguir alumnos y asignártelos según tu perfil, materias y disponibilidad.</p></details>
+      <details><summary>¿Desde dónde puedo dar clases?</summary><p>Desde cualquier lugar con buena conexión a internet. Nuestros tutores dan clases desde Perú, España y otros países. Wizz tiene presencia en Latinoamérica y Europa.</p></details>
+      <details><summary>¿Qué materias puedo enseñar?</summary><p>Matemáticas, Física, Química, Biología, Historia, Lengua y Literatura, Inglés, entre otras. Tanto de secundaria como del Programa IB.</p></details>
+      <details><summary>¿Qué herramientas voy a usar?</summary><p>Te damos acceso a plataformas, recursos digitales y material de apoyo. Todo lo necesario para dar una clase profesional y hacer seguimiento del progreso de tu alumno.</p></details>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap" style="padding-block:var(--s12)">
+    <p class="label">Ecosistema educativo mundial</p>
+    <h2>Empieza tu carrera como tutor. Desde Perú o desde España.</h2>
+    <p>Sin experiencia previa. Sin buscarte alumnos. Sin complicaciones.</p>
+    <button class="btn open-modal-btn" type="button" style="margin-top:var(--s3);background:var(--panel-fg);color:var(--panel)">Quiero ser tutor</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo" src="assets/img/logo-wizz.png" alt="Wizz Tutorías">
+    <nav aria-label="Pie de página">
+      <a href="index.html">Para padres</a>
+      <a href="#por-que">Por qué Wizz</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <small><span>© 2026 Wizz Tutorías · Perú · Madrid</span><span>Ecosistema educativo mundial</span></small>
+  </div>
+</footer>
+
+<!-- ═══ MODAL ═══ -->
+<div class="mdl-overlay" id="mdl-overlay" role="dialog" aria-modal="true" aria-label="Inscripción de tutor">
+  <div class="mdl">
+    <div class="mdl-head">
+      <h2>Quiero ser tutor</h2>
+      <button class="mdl-close" type="button" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="mdl-body" id="mdl-body">
+      <form id="tutor-form" novalidate>
+        <input type="hidden" name="access_key" value="b8aceb0c-a574-4a9a-9e51-eb648b5cd941">
+        <input type="hidden" name="subject" value="Nuevo tutor interesado – Wizz Tutorías">
+        <input type="hidden" name="from_name" value="Wizz Tutorías Web (Tutores)">
+        <input type="checkbox" name="botcheck" style="display:none">
+
+        <div class="f-row">
+          <div class="f-field">
+            <label for="tf-nombre">Tu nombre</label>
+            <input type="text" id="tf-nombre" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required>
+          </div>
+          <div class="f-field">
+            <label for="tf-email">Email</label>
+            <input type="email" id="tf-email" name="email" autocomplete="email" placeholder="tu@email.com" required>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="f-field">
+            <label for="tf-whatsapp">WhatsApp</label>
+            <input type="tel" id="tf-whatsapp" name="whatsapp" inputmode="numeric" autocomplete="tel" placeholder="+51 9XX XXX XXX" required>
+          </div>
+          <div class="f-field">
+            <label for="tf-pais">¿En qué país estás?</label>
+            <select id="tf-pais" name="pais" required>
+              <option value="">Elige tu país</option>
+              <option value="Perú">Perú</option>
+              <option value="España">España</option>
+              <option value="Colombia">Colombia</option>
+              <option value="México">México</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Chile">Chile</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Bolivia">Bolivia</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="f-field">
+            <label for="tf-universidad">Universidad / Instituto</label>
+            <input type="text" id="tf-universidad" name="universidad" placeholder="Nombre de tu universidad">
+          </div>
+          <div class="f-field">
+            <label for="tf-carrera">Carrera</label>
+            <input type="text" id="tf-carrera" name="carrera" placeholder="¿Qué estudias o estudiaste?">
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label for="tf-ib">¿Hiciste el Bachillerato Internacional (IB)?</label>
+          <select id="tf-ib" name="hizo_ib">
+            <option value="">Elige una opción</option>
+            <option value="Sí">Sí, hice el IB completo</option>
+            <option value="Parcialmente">Hice algunas materias IB</option>
+            <option value="No">No, pero domino materias de secundaria</option>
+          </select>
+        </div>
+
+        <div class="f-field">
+          <label for="tf-materias">¿Qué materias puedes enseñar?</label>
+          <input type="text" id="tf-materias" name="materias" placeholder="Ej.: Matemáticas, Física, Biología" required>
+        </div>
+
+        <div class="f-field">
+          <label for="tf-sobre-ti">Cuéntanos de ti</label>
+          <textarea id="tf-sobre-ti" name="sobre_ti" placeholder="Qué te apasiona, qué haces además de estudiar, por qué te interesa enseñar..."></textarea>
+        </div>
+
+        <p class="f-error" id="tf-error"></p>
+        <button class="btn" type="submit" style="width:100%;justify-content:center;min-height:56px">Enviar mi inscripción</button>
+        <p class="mdl-fine">Nos comunicamos contigo por WhatsApp o email.</p>
+      </form>
+    </div>
+    <div class="f-success" id="tf-success" style="display:none">
+      <h3>¡Recibimos tu inscripción!</h3>
+      <p>Nos vamos a comunicar contigo pronto para conocerte mejor. Revisa tu WhatsApp y tu email.</p>
+      <button class="btn mdl-close" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── Modal ── */
+  var overlay = document.getElementById('mdl-overlay');
+  var scrollY = 0;
+
+  function openModal(){
+    scrollY = window.scrollY;
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.classList.add('modal-open');
+    overlay.classList.add('open');
+    overlay.querySelector('.mdl-close').focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollY);
+  }
+
+  document.querySelectorAll('.open-modal-btn').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+  });
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  overlay.querySelectorAll('.mdl-close').forEach(function(b){
+    b.addEventListener('click', function(){ closeModal(); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+
+  /* ── Form ── */
+  var form = document.getElementById('tutor-form');
+  var errEl = document.getElementById('tf-error');
+  var successEl = document.getElementById('tf-success');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.style.display = 'none';
+    errEl.textContent = '';
+
+    var nombre = document.getElementById('tf-nombre').value.trim();
+    var email = document.getElementById('tf-email').value.trim();
+    var whatsapp = document.getElementById('tf-whatsapp').value.trim();
+    var materias = document.getElementById('tf-materias').value.trim();
+
+    if(!nombre){ showErr('Escribe tu nombre.'); return; }
+    if(!email || email.indexOf('@') === -1){ showErr('Escribe un email válido.'); return; }
+    if(!whatsapp || whatsapp.replace(/\D/g,'').length < 7){ showErr('Escribe un número de WhatsApp válido.'); return; }
+    if(!materias){ showErr('Indica al menos una materia que puedas enseñar.'); return; }
+
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    var data = new FormData(form);
+    var payload = {};
+    data.forEach(function(v, k){ payload[k] = v; });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(res.success){
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        showErr('Hubo un error. Intenta de nuevo.');
+        btn.disabled = false;
+        btn.textContent = 'Enviar mi inscripción';
+      }
+    })
+    .catch(function(){
+      showErr('Error de conexión. Intenta de nuevo.');
+      btn.disabled = false;
+      btn.textContent = 'Enviar mi inscripción';
+    });
+  });
+
+  function showErr(msg){
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  }
+})();
+</script>
+
+</body>
+</html>
